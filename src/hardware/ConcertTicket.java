@@ -1,27 +1,27 @@
 package hardware;
-import hardware.PurchasedTicket;
-import hardware.ReservedTicket;
+//import hardware.PurchasedTicket;
+//import hardware.ReservedTicket;
 
 public abstract class ConcertTicket extends Concert{
 	private double price;
 	private int seat;
-	private PurchasedTicket purchased; //Still confused on if we should include available tickets
-	private ReservedTicket reserved;
+	//private PurchasedTicket purchased; //Still confused on if we should include available tickets
+	//private ReservedTicket reserved;
 	
 	//Constructors
 	public ConcertTicket() {
 		this.price = -1.0;
 		this.seat = -1;
-		this.purchased = new PurchasedTicket();
-		this.reserved = new ReservedTicket();
+		//this.purchased = new PurchasedTicket();
+		//this.reserved = new ReservedTicket();
 	}
 	
-	public ConcertTicket(double price, int seat, PurchasedTicket purchased, ReservedTicket reserved) {
+	public ConcertTicket(double price, int seat/*, PurchasedTicket purchased, ReservedTicket reserved*/) {
 		super();
 		this.price = price;
 		this.seat = seat;
-		this.purchased = purchased;
-		this.reserved = reserved;
+		//this.purchased = purchased;
+		//this.reserved = reserved;
 	}
 
 	//Getters and setters
@@ -41,7 +41,7 @@ public abstract class ConcertTicket extends Concert{
 		this.seat = seat;
 	}
 
-	public PurchasedTicket getPurchased() {
+	/*public PurchasedTicket getPurchased() {
 		return purchased;
 	}
 
@@ -55,7 +55,7 @@ public abstract class ConcertTicket extends Concert{
 
 	public void setReserved(ReservedTicket reserved) {
 		this.reserved = reserved;
-	}
+	}*/
 	
 	//Print functions
 	public void printTicket() {
@@ -64,14 +64,20 @@ public abstract class ConcertTicket extends Concert{
 	}
 	
 	public void purchaseTicket() {
-		
+		//Removes ticket from array of available tickets
 	}
 	
 	public void reserveTicket() {
-		
+		//Removes ticket from array of available tickets, but returns if time limit passes
+		int time = 1000; //random num
+		while(time > 0) {
+			time--;
+			//Put more code here
+		}
+		System.out.print("Time ran out!");
 	}
 	
-	public void addTicketToList(ConcertTicket ticket) {
+	public void addTicketToList(ConcertTicket ticket) { //still confused on this one, but I'll figure it out
 		
 	}
 }

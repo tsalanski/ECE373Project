@@ -187,7 +187,9 @@ public class Driver1 {
 				System.out.println("Music Venue\n");
 				
 				MusicVenue venue = new MusicVenue();
-				
+				venue.browse();
+				venue.printConcertList();
+				venue.exit();
 				break;
 			case 5:
 				// Display Concerts page:  User can sort by categories: genre, artist, city
