@@ -1,5 +1,5 @@
 package hardware;
 
-public class PurchasedTicket {
+public class PurchasedTicket extends ConcertTicket{
 
 }
