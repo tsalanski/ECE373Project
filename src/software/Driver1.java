@@ -11,10 +11,20 @@ public class Driver1 {
 	public static void main(String[] args) 
 	{
 		int pageNo = -1;
+		int verifyType = -1;
 		boolean exit = false;
 		pageNo = 1;										// Program starts at Login page
 		Scanner user_input = new Scanner(System.in);	// user input
 		String option = "\0";							// User input for options
+		
+		String username = "\0";							// User Login information entries:
+		String password = "\0";
+		
+		String ccName = "\0";							// Credit Card information entries:
+		String ccAddress = "\0";
+		int ccPhone = 0;
+		int ccNo = 0;
+		
 		Random rand = new Random();						// Generate random number
 		
 		// Program starts here:
@@ -33,15 +43,14 @@ public class Driver1 {
 					pageNo = 2;	// Goto "Registration" page
 				}
 				else if(option.compareTo("login") == 0) {
-					String username = "\0";
 					System.out.print("Enter your user name: ");
 					username = user_input.next();
 					
-					String password = "\0";
 					System.out.print("Enter your password: ");
 					password = user_input.next();
 					
-					pageNo = 3;	// Goto "Verfication" page
+					pageNo = 3;			// Goto "Verfication" page
+					verifyType = 1;		// Type 1 for user verification
 				}
 				else {
 					System.out.println("Error: Invalid entry, please try again.\n");
@@ -64,33 +73,42 @@ public class Driver1 {
 					String fullname = "\0";
 					fullname = user_input.next();
 					
-					System.out.println("Please enter your birthday:  ");
-					String birthday = "\0";
-					birthday = user_input.next();
-					
-					int accountNo = rand.nextInt(1000);	// Generate new Account No.
-					
+					// create new Listener
 					Listener user0 = new Listener();
 					user0.setName(fullname);
-					user0.setBirthday(Integer.parseInt(birthday));
+					
+					// needs to check if user entered the correct birtyday format
+					boolean error = false;
+					while(error == false) {
+						System.out.println("Please enter your birthday:  ");
+						String birthday = "\0";
+						birthday = user_input.next();
+						error = user0.checkBirthdayFormat(birthday);
+					}
+					
+					int accountNo = rand.nextInt(1000);	// Generate new Account No.
 					user0.setAccountNo(accountNo);
 					
 					System.out.print("Please enter a username for your new account:  ");
-					String username = "\0";
 					username = user_input.next();
 					
 					System.out.print("Please enter a password for your new account:  ");
-					String password = "\0";
 					password = user_input.next();
 					
-					System.out.print("Please enter a email for your new account:  ");
-					String email = "\0";
-					email = user_input.next();
-					
+					// create new Account
 					Account account0 = new Account();
 					account0.setUsername(username);
 					account0.setPassword(password);
-					account0.setEmail(email);
+					
+					error = false;
+					while(error == false) {
+						System.out.print("Please enter a email for your new account:  ");
+						String email = "\0";
+						email = user_input.next();
+						error = account0.checkEmailFormat(email);
+					}
+					
+					// sets new account to user
 					user0.setAccount(account0);
 										
 				}
@@ -100,33 +118,43 @@ public class Driver1 {
 					String fullname = "\0";
 					fullname = user_input.next();
 					
-					System.out.println("Please enter your birthday:  ");
-					String birthday = "\0";
-					birthday = user_input.next();
-					
-					int accountNo = rand.nextInt(1000);	// Generate new Account No.
-					
+					// create new Musician
 					Musician user1 = new Musician();
 					user1.setName(fullname);
-					user1.setBirthday(Integer.parseInt(birthday));
+					
+					// needs to check if user entered the correct birtyday format
+					boolean error = false;
+					while(error == false) {
+						System.out.println("Please enter your birthday:  ");
+						String birthday = "\0";
+						birthday = user_input.next();
+						error = user1.checkBirthdayFormat(birthday);
+					}
+					
+					
+					int accountNo = rand.nextInt(1000);	// Generate new Account No.
 					user1.setAccountNo(accountNo);
 					
 					System.out.print("Please enter a username for your new account:  ");
-					String username = "\0";
 					username = user_input.next();
 					
 					System.out.print("Please enter a password for your new account:  ");
-					String password = "\0";
 					password = user_input.next();
 					
-					System.out.print("Please enter a email for your new account:  ");
-					String email = "\0";
-					email = user_input.next();
-					
+					// create new Account
 					Account account1 = new Account();
 					account1.setUsername(username);
 					account1.setPassword(password);
-					account1.setEmail(email);
+					
+					error = false;
+					while(error == false) {
+						System.out.print("Please enter a email for your new account:  ");
+						String email = "\0";
+						email = user_input.next();
+						error = account1.checkEmailFormat(email);
+					}
+					
+					// sets new account to user
 					user1.setAccount(account1);
 				}
 				pageNo = 1;	// Return to "Login" page
@@ -135,7 +163,24 @@ public class Driver1 {
 				// Valid user is taken to the "Music Venue" (main page)
 				// Invalid user is taken to the "Access Denied" Page and returns to the Login page
 				System.out.println("Verification\n");
-				break;
+				Verification verify = new Verification();
+				if(verifyType == 1) {	// 1: user verification
+					if(verify.verifyUser(username, password) == true) {
+						pageNo = 4;		// Goto "Music Venue" page
+					}else {
+						System.out.println("Invalid user, returning to Login page\n");
+						pageNo = 1;		// Return to "Login" page
+					}
+				}
+				else if(verifyType == 2) {	// 2: credit card verification
+					CreditCard cc1 = new CreditCard(ccName, ccAddress, ccPhone, ccNo);
+					if(verify.verifyCard(cc1) == true) {
+						pageNo = 10;	// Goto "Purchase Complete" page
+					}else {
+						System.out.println("Invalid credit card, returning to previous page\n");
+						pageNo = 8; 	// Return to "Enter Credit Card" page
+					}
+				}
 			case 4:
 				// Music Venue (main page):  User can start looking for Concerts by going to browse which takes user to "Display Concerts" page
 				// User may choose to exit the application at anytime which returns them to "Login" page.
@@ -163,7 +208,8 @@ public class Driver1 {
 				// After user has entered credit card information, they will be taken to the "Verification" page
 				// User may choose to cancel at any time and returns to "Display Concert Tickets" page
 				System.out.println("Please enter your credit card information\n");
-				break;
+				
+				pageNo = 3;	// Goto "Verification" page
 			case 9:
 				// Verification page:  checks if credit card information is valid/invalid
 				// Valid credit card takes the user to "Purchase Complete" page
