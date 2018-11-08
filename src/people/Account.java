@@ -73,4 +73,16 @@ public class Account {
 	public void addReservedTicket(ReservedTicket newTicket) {
 		this.reservedTicketList.add(newTicket);
 	}
+	
+	// checks if user entered the correct email format
+	public boolean checkEmailFormat(String str) {
+		// user's email should contain ".com"
+		if(str.contains("@") == true && str.contains(".com") == true) {
+			this.setEmail(str);
+			return true;
+		}else {
+			System.out.println("\nIncorrect format entered by user: please try again.\n");
+			return false;
+		}
+	}
 }

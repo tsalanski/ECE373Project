@@ -1,5 +1,7 @@
 package people;
 
+import java.util.regex.Pattern;
+
 public abstract class User {
 	// fields
 	private int accountNo;
@@ -25,11 +27,7 @@ public abstract class User {
 	}
 	
 	public void setBirthday(int num) {
-		if(checkBirthdayFormat(num) == true) {
-			this.birthday = num;
-		}else {
-			System.out.println("\nIncorrect format entered by user: please try again.\n");
-		}
+		this.birthday = num;
 	}
 	
 	public void setAccount(Account acc) {
@@ -54,12 +52,13 @@ public abstract class User {
 	}
 	
 	// methods
-	boolean checkBirthdayFormat(int num) {
+	public boolean checkBirthdayFormat(String str) {
 		// user should enter in the following format: MMDDYYYY
-		int digits = (int) (Math.log10(num)+1);
-		if(digits > 8) {
+		if(Pattern.matches("[0-9]+", str) && str.length() != 8) {
+			System.out.println("\nIncorrect format entered by user: please try again.\n");
 			return false;
 		}else {
+			this.setBirthday(Integer.parseInt(str));
 			return true;
 		}
 	}
