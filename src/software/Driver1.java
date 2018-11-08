@@ -5,6 +5,7 @@ import hardware.*;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.io.InputStreamReader;
 
 
 public class Driver1 {
@@ -187,7 +188,6 @@ public class Driver1 {
 				System.out.println("Music Venue\n");
 				
 				MusicVenue venue = new MusicVenue();
-				venue.browse();
 				venue.printConcertList();
 				venue.exit();
 				break;
@@ -196,6 +196,8 @@ public class Driver1 {
 				// User may choose Concert Tickets, this takes them to "Display Concert Ticket" page displaying the ticket information
 				// User may choose to return to previous page which takes them back to "Music Venue" page
 				System.out.println("Concerts\n");
+				MusicVenue venue1 = new MusicVenue();
+				venue1.sort();
 				break;
 			case 6:
 				// Display Concert Tickets page:  User have the option to reserve/purchase ticket
@@ -225,7 +227,16 @@ public class Driver1 {
 				// Purchase Complete page: Displays successful purchased notification
 				// Tickets purchased should be added to user's purchased ticket list and update the available seats
 				// User has the option to share on social media or return to main page
+				
+				//drop down menu when we build the GUI to choose between Facebook and Twitter?
 				System.out.println("Purchase Complete\n");
+				SocialMedia media = new SocialMedia();
+				ConcertTicket purTicket = new ConcertTicket();
+				System.out.println("Share to Facebook/Twitter?");
+				Scanner scanner = new Scanner( System.in );
+				String input = scanner.nextLine();
+				media.setPlatform(input);
+				media.share(purTicket);
 				break;
 			default:
 					break;
