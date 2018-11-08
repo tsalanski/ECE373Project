@@ -1,25 +1,34 @@
 package people;
 
-import java.util.ArrayList;
-
 public class CreditCard {
 	// fields
 	private String fullname;
-	private ArrayList<String> addressList;
+	private String address;
 	private int cardNo;
 	private int phoneNo;
 	
-	// constructor
+	// constructors
 	public CreditCard() {
 		this.fullname = "\0";
-		this.addressList = new ArrayList<String>();
+		this.address = "\0";
 		this.cardNo = 0;
 		this.phoneNo = 0;
+	}
+	
+	public CreditCard(String ccName, String ccAddress, int ccPhone, int ccNo) {
+		this.fullname = ccName;
+		this.address = ccAddress;
+		this.cardNo = ccNo;
+		this.phoneNo = ccPhone;
 	}
 	
 	// setters
 	public void setFullname(String str) {
 		this.fullname = str;
+	}
+	
+	public void setAddress(String str) {
+		this.address = str;
 	}
 	
 	public void setCardNo(int num) {
@@ -39,8 +48,8 @@ public class CreditCard {
 		return this.fullname;
 	}
 	
-	public ArrayList<String> getAddressList(){
-		return this.addressList;
+	public String getAddress(){
+		return this.address;
 	}
 	
 	public int getCardNo() {
@@ -52,9 +61,6 @@ public class CreditCard {
 	}
 	
 	// methods
-	public void addAddress(String newAddress) {
-		this.addressList.add(newAddress);
-	}
 	
 	boolean checkPhoneFormat(int num) {
 		// user should enter 10 digits for a phone number
