@@ -122,7 +122,7 @@ public class Driver1 {
 					Musician user1 = new Musician();
 					user1.setName(fullname);
 					
-					// needs to check if user entered the correct birtyday format
+					// needs to check if user entered the correct birthday format
 					boolean error = false;
 					while(error == false) {
 						System.out.println("Please enter your birthday:  ");
@@ -185,6 +185,9 @@ public class Driver1 {
 				// Music Venue (main page):  User can start looking for Concerts by going to browse which takes user to "Display Concerts" page
 				// User may choose to exit the application at anytime which returns them to "Login" page.
 				System.out.println("Music Venue\n");
+				
+				MusicVenue venue = new MusicVenue();
+				
 				break;
 			case 5:
 				// Display Concerts page:  User can sort by categories: genre, artist, city

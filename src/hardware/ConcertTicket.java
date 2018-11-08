@@ -3,7 +3,6 @@ import hardware.PurchasedTicket;
 import hardware.ReservedTicket;
 
 public abstract class ConcertTicket extends Concert{
-
 	private double price;
 	private int seat;
 	private PurchasedTicket purchased; //Still confused on if we should include available tickets
