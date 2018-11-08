@@ -27,12 +27,13 @@ public class Verification {
 	}
 	
 	// methods
-	public boolean verifyUser(String username, String password) {
+	public boolean verifyUser(User user1, String username, String password) {
 		boolean checkUser = false;
 		for(int i = 0; i < this.accountList.size(); i++) {
 			if(this.accountList.get(i).getUsername() == username
 					&& this.accountList.get(i).getPassword() == password) {
 				checkUser = true;
+				user1.setAccount(this.accountList.get(i));
 			}
 			else{
 				checkUser = false;
@@ -47,6 +48,7 @@ public class Verification {
 		boolean checkAddress = false;
 		boolean checkPhone = false;
 		boolean checkCardNo = false;
+		boolean flag = false;
 		for(int i = 0; i < this.ccList.size(); i++){
 			if(this.ccList.get(i).getFullname() == cc1.getFullname()){
 					checkName = true;
@@ -60,12 +62,14 @@ public class Verification {
 						}
 					}
 			}
+			if(checkName == true && checkAddress == true && checkPhone == true && checkCardNo == true){
+				cc1 = this.ccList.get(i);
+				flag = true;
+			}
+			else{
+				flag = false;
+			}
 		}
-		if(checkName == true && checkAddress == true && checkPhone == true && checkCardNo == true){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return flag;
 	}
 }

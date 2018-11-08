@@ -9,8 +9,8 @@ public class Account {
 	private String password;
 	private String email;
 	private ArrayList<CreditCard> creditCardList;
-	private ArrayList<PurchasedTicket> purchasedTicketList;
-	private ArrayList<ReservedTicket> reservedTicketList;
+	private ArrayList<Concert> purchasedTicketList;
+	private ArrayList<Concert> reservedTicketList;
 	
 	// constructor
 	public Account() {
@@ -18,8 +18,8 @@ public class Account {
 		this.password = "\0";
 		this.email = "\0";
 		this.creditCardList = new ArrayList<CreditCard>();
-		this.purchasedTicketList = new ArrayList<PurchasedTicket>();
-		this.reservedTicketList = new ArrayList<ReservedTicket>();
+		this.purchasedTicketList = new ArrayList<Concert>();
+		this.reservedTicketList = new ArrayList<Concert>();
 	}
 	
 	// setters
@@ -53,11 +53,11 @@ public class Account {
 		return this.creditCardList;
 	}
 	
-	public ArrayList<PurchasedTicket> getPurchasedTicketList(){
+	public ArrayList<Concert> getPurchasedTicketList(){
 		return this.purchasedTicketList;
 	}
 	
-	public ArrayList<ReservedTicket> getReservedTicketList(){
+	public ArrayList<Concert> getReservedTicketList(){
 		return this.reservedTicketList;
 	}
 	
@@ -66,11 +66,11 @@ public class Account {
 		this.creditCardList.add(newCard);
 	}
 	
-	public void addPurchasedTicket(PurchasedTicket newTicket) {
+	public void addPurchasedTicket(Concert newTicket) {
 		this.purchasedTicketList.add(newTicket);
 	}
 	
-	public void addReservedTicket(ReservedTicket newTicket) {
+	public void addReservedTicket(Concert newTicket) {
 		this.reservedTicketList.add(newTicket);
 	}
 	

@@ -29,11 +29,7 @@ public class MusicVenue {
 		System.out.print(this.concerts);
 	}
 	
-	//Other Methods
-	public void browse() {
-		
-	}
-	
+	//Other Methods	
 	public void sort() {
 		
 	}
