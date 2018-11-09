@@ -45,7 +45,6 @@ public class MusicVenue {
 	}
 	
 	//Other Methods	
-		
 	public int getCapacity() {
 		return this.capacity;
 	}

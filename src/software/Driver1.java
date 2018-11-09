@@ -31,6 +31,7 @@ public class Driver1 {
 		Listener user0 = new Listener();				// Create new Listener
 		Musician user1 = new Musician();				// Create new Musician
 		Account account1 = new Account();				// create new Account
+		Verification verify = new Verification();
 		MusicVenue venue = new MusicVenue();			// create MusicVenue object
 		ConcertTicket ticket = new ConcertTicket();		// create ConcertTicket object
 		Concert newReserved = new ConcertTicket();		// create Concert object for reserved ticket
@@ -64,10 +65,12 @@ public class Driver1 {
 					
 					pageNo = 3;			// Goto "Verfication" page
 					verifyType = 1;		// Type 1: User verification
+					break;
 				}
 				else {
 					System.out.println("Error: Invalid entry, please try again.\n");
 					pageNo = 1; // Return to "Login" page
+					break;
 				}
 				
 ////////// REGISTRATION ////////// REGISTRATION  ////////// REGISTRATION ////////// REGISTRATION //////////		
@@ -119,7 +122,7 @@ public class Driver1 {
 					
 					// sets new account to user
 					user0.setAccount(account1);
-										
+					verify.setNewAccount(account1);	
 				}
 				else if(option.compareTo("M") == 0) {
 					System.out.println("You are registering as a Musician\n");
@@ -160,8 +163,10 @@ public class Driver1 {
 					
 					// sets new account to user
 					user1.setAccount(account1);
+					verify.setNewAccount(account1);
 				}
 				pageNo = 1;	// Return to "Login" page
+				break;
 				
 ////////// VERIFICATION ////////// VERIFICATION  ////////// VERIFICATION ////////// VERIFICATION ////////// VERIFICATION 			
 			case 3:
@@ -169,14 +174,15 @@ public class Driver1 {
 				// Valid user is taken to the "Music Venue" (main page)
 				// Invalid user is taken to the "Access Denied" Page and returns to the Login page
 				System.out.println("Verification\n");
-				Verification verify = new Verification();
 				System.out.println("Verifying User...\n");
 				if(verifyType == 1) {	// 1: user verification
 					if(verify.verifyUser(user0, username, password) == true) {
 						pageNo = 4;		// Goto "Music Venue" page
+						break;
 					}else {
 						System.out.println("Invalid user, returning to Login page\n");
 						pageNo = 1;		// Return to "Login" page
+						break;
 					}
 				}
 				else if(verifyType == 2) {	// 2: credit card verification
@@ -185,9 +191,11 @@ public class Driver1 {
 					if(verify.verifyCard(cc1) == true) {
 						newPurchased = venue.getConcert().get(index);
 						pageNo = 10;	// Goto "Purchase Complete" page
+						break;
 					}else {
 						System.out.println("Invalid credit card, returning to previous page\n");
 						pageNo = 8; 	// Return to "Enter Credit Card" page
+						break;
 					}
 				}
 				
@@ -196,6 +204,38 @@ public class Driver1 {
 				// Music Venue (main page):  User can start looking for Concerts by going to browse which takes user to "Display Concerts" page
 				// User may choose to exit the application at anytime which returns them to "Login" page.
 				System.out.println("Music Venue\n");
+				System.out.println("Enter (concert) to browse available concerts or (account) to get account information:  ");
+				option = user_input.next();
+				if(option.compareTo("concert") == 0) {
+					pageNo = 5; // Goto "Concerts" page
+				}else if(option.compareTo("account") == 0) {
+					if(user0 == null) {
+						user1.getAccount().displayAccountInfo(user1);
+					}else {
+						user0.getAccount().displayAccountInfo(user0);
+					}
+					pageNo = 4;
+					break;
+				}else {
+					System.out.println("Would you like to exit Music Venue? Please enter: \"Yes\" or \"No\"\n");
+					option = user_input.next();
+					if(option.compareTo("Yes") == 0) {
+						pageNo = 1;
+						break;
+					}else {
+						pageNo = 4;
+						break;
+					}
+				}
+				
+				//venue.exit();
+////////// CONCERTS ////////// CONCERTS  ////////// CONCERTS ////////// CONCERTS //////////	CONCERTS //////////	
+			case 5:
+				// Display Concerts page:  User can sort by categories: genre, artist, city
+				// User may choose Concert Tickets, this takes them to "Display Concert Ticket" page displaying the ticket information
+				// User may choose to return to previous page which takes them back to "Music Venue" page
+				System.out.println("\nConcerts\n");
+
 				venue.printConcertList();
 				System.out.println("Please enter a number to select Concert: ");
 				option = user_input.next();
@@ -211,34 +251,20 @@ public class Driver1 {
 						System.out.println("No seats available, please try again at a later time.\n");
 					}else {
 						user0.getAccount().addReservedTicket(newReserved);
-						pageNo = 7;
+						pageNo = 7;	// Goto "Reserved Complete" page
+						break;
 					}
 				}else if(option.compareTo("P") == 0) {
 					newPurchased = venue.getConcert().get(index);
 					if(newPurchased.checkAvailableSeats() == false) {
 						System.out.println("No seats available, please try again at a later time.\n");
 					}else {
-						pageNo = 8;
+						pageNo = 8; // Goto "Enter Credit Card" page
+						break;
 					}
 				}
-				
-				MusicVenue venue2 = new MusicVenue();
-				venue.printConcertList();
-				venue.exit();
-				break;
-			case 5:
-				// Display Concerts page:  User can sort by categories: genre, artist, city
-				// User may choose Concert Tickets, this takes them to "Display Concert Ticket" page displaying the ticket information
-				// User may choose to return to previous page which takes them back to "Music Venue" page
-				System.out.println("Concerts\n");
-				MusicVenue venue1 = new MusicVenue();
-				venue1.sort();
-				break;
-			case 6:
-				// Display Concert Tickets page:  User have the option to reserve/purchase ticket
-				// Reserve & purchase requires to verify the number of available seats before proceeding "Reservation Complete" page
-				System.out.println("Concert Ticket\n");
-				break;
+				//venue1.sort();
+			
   ////////// RESERVED ////////// RESERVED  ////////// RESERVED ////////// RESERVED //////////		
 			case 7:
 				// Reservation Complete page: Displays successful reservation notification
@@ -250,6 +276,7 @@ public class Driver1 {
 				newReserved.setAvailableSeat(-1);
 				
 				pageNo = 4;		// Goes back to "Music Venue" page
+				break;
 
 				
 ////////// CREDIT CARD ////////// CREDIT CARD  ////////// CREDIT CARD ////////// CREDIT CARD //////////		
@@ -274,6 +301,7 @@ public class Driver1 {
 				
 				verifyType = 2;	// Type 2: Credit Card Verification
 				pageNo = 3;	// Goto "Verification" page
+				break;
 				
 ////////// PURCHASED ////////// PURCHASED  ////////// PURCHASED ////////// PURCHASED //////////		
 			case 9:
