@@ -65,13 +65,13 @@ public class Driver1 {
 		ticket2.setLocation("Phoenix");
 		venue.setConcerts(ticket2);
 		
-		ConcertTicket ticket3 = new ConcertTicket();
-		ticket3.setPrice(105.00);
-		ticket3.setSeat(11);
-		ticket3.setConcertName("Concert No. 3");
-		ticket3.setAvailableSeat(50);
-		ticket3.setDate(15);
-		ticket3.setLocation("Phoenix");
+		ConcertTicket ticket2 = new ConcertTicket();
+		ticket2.setPrice(105.00);
+		ticket2.setSeat(11);
+		ticket2.setConcertName("Concert No. 2");
+		ticket2.setAvailableSeat(50);
+		ticket2.setDate(15);
+		ticket2.setLocation("Phoenix");
 		venue.setConcerts(ticket2);
 		
 		// Program starts here:
@@ -212,11 +212,10 @@ public class Driver1 {
 				System.out.println("Verifying User...\n");
 				if(verifyType == 1) {	// 1: user verification
 					if(verify.verifyUser(user0, username, password) == true) {
-						System.out.println("Valid user. Welcome!\n");
 						pageNo = 4;		// Goto "Music Venue" page
 						break;
 					}else {
-						System.out.println("Invalid username or password, returning to Login page\n");
+						System.out.println("Invalid user, returning to Login page\n");
 						pageNo = 1;		// Return to "Login" page
 						break;
 					}
