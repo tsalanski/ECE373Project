@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.*; 
 
-import hardware.Concert;
+import hardware.*;
 
 public class MusicVenue {
 
-	private ArrayList<Concert> concerts;
+	private ArrayList<ConcertTicket> concerts;
 	private String address;
 	private String name;
 	private int capacity;
 	
 	public MusicVenue() {
-		this.concerts = new ArrayList<Concert>();
+		this.concerts = new ArrayList<ConcertTicket>();
 		this.address = "unknown";
 		this.name = "unknown";
 		this.capacity = 0;
 	}
 	
-	public ArrayList<Concert> getConcert() {
+	public ArrayList<ConcertTicket> getConcert() {
 		return this.concerts;
 	}
 	
-	public void setConcerts(Concert c) {
+	public void setConcerts(ConcertTicket c) {
 		this.concerts.add(c);
 	}
 	
@@ -62,7 +62,10 @@ public class MusicVenue {
 		int count = 0;
 		for (i = 0; i < this.concerts.size(); i++) {
 			count++;
-			System.out.println(count + ")" + this.concerts.get(i));
+			System.out.println(count + ")" + this.concerts.get(i).getConcertName()
+							   + "\n\tLocation:\t" + this.concerts.get(i).getLocation()
+							   + "\n\tDate:\t" + this.concerts.get(i).getDate()
+							   + "\n\tPrice:\t" + "$" + this.concerts.get(i).getPrice() + "\n\n");
 		}
 	}
 	
