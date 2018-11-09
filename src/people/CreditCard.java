@@ -4,18 +4,18 @@ public class CreditCard {
 	// fields
 	private String fullname;
 	private String address;
-	private int cardNo;
-	private int phoneNo;
+	private String cardNo;
+	private String phoneNo;
 	
 	// constructors
 	public CreditCard() {
 		this.fullname = "\0";
 		this.address = "\0";
-		this.cardNo = 0;
-		this.phoneNo = 0;
+		this.cardNo = "\0";
+		this.phoneNo = "\0";
 	}
 	
-	public CreditCard(String ccName, String ccAddress, int ccPhone, int ccNo) {
+	public CreditCard(String ccName, String ccAddress, String ccPhone, String ccNo) {
 		this.fullname = ccName;
 		this.address = ccAddress;
 		this.cardNo = ccNo;
@@ -31,11 +31,11 @@ public class CreditCard {
 		this.address = str;
 	}
 	
-	public void setCardNo(int num) {
+	public void setCardNo(String num) {
 		this.cardNo = num;
 	}
 	
-	public void setPhoneNo(int num) {
+	public void setPhoneNo(String num) {
 		if(checkPhoneFormat(num) == true) {
 			this.phoneNo = num;
 		}else {
@@ -52,20 +52,20 @@ public class CreditCard {
 		return this.address;
 	}
 	
-	public int getCardNo() {
+	public String getCardNo() {
 		return this.cardNo;
 	}
 	
-	public int getPhoneNo() {
+	public String getPhoneNo() {
 		return this.phoneNo;
 	}
 	
 	// methods
 	
-	boolean checkPhoneFormat(int num) {
+	boolean checkPhoneFormat(String num) {
 		// user should enter 10 digits for a phone number
-		int digits = (int) (Math.log10(num)+1);
-		if(digits > 10) {
+		
+		if(num.length() > 10) {
 			return false;
 		}else {
 			return true;
