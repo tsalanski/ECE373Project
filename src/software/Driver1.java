@@ -81,7 +81,7 @@ public class Driver1 {
 					// needs to check if user entered the correct birthday format
 					boolean error = false;
 					while(error == false) {
-						System.out.println("Please enter your birthday:  ");
+						System.out.println("Please enter your birthday as an 8-digit number (MMDDYYYY):  ");
 						String birthday = "\0";
 						birthday = user_input.next();
 						error = user0.checkBirthdayFormat(birthday);
@@ -115,7 +115,7 @@ public class Driver1 {
 				}
 				else if(option.compareTo("M") == 0) {
 					System.out.println("You are registering as a Musician\n");
-					System.out.print("Please enter your fullname:  ");
+					System.out.print("Please enter your name (no spaces):  ");
 					String fullname = "\0";
 					fullname = user_input.next();
 					
@@ -126,7 +126,7 @@ public class Driver1 {
 					// needs to check if user entered the correct birthday format
 					boolean error = false;
 					while(error == false) {
-						System.out.println("Please enter your birthday:  ");
+						System.out.println("Please enter your birthday as an 8-digit number (MMDDYYYY):  ");
 						String birthday = "\0";
 						birthday = user_input.next();
 						error = user1.checkBirthdayFormat(birthday);
