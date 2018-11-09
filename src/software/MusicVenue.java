@@ -44,6 +44,9 @@ public class MusicVenue {
 		this.name = name;
 	}
 	
+	//Other Methods	
+	public void sort() {
+		
 	public int getCapacity() {
 		return this.capacity;
 	}
