@@ -16,6 +16,13 @@ public class Verification {
 	}
 	
 	// setters
+	public void setNewAccount(Account acc){
+		this.accountList.add(acc);
+	}
+	
+	public void setNewCreditCard(CreditCard cc) {
+		this.ccList.add(cc);
+	}
 	
 	// getters
 	public ArrayList<Account> getAccountList() {
@@ -30,8 +37,8 @@ public class Verification {
 	public boolean verifyUser(User user1, String username, String password) {
 		boolean checkUser = false;
 		for(int i = 0; i < this.accountList.size(); i++) {
-			if(this.accountList.get(i).getUsername() == username
-					&& this.accountList.get(i).getPassword() == password) {
+			if(this.accountList.get(i).getUsername().compareTo(username) == 0
+					&& this.accountList.get(i).getPassword().compareTo(password) == 0) {
 				checkUser = true;
 				user1.setAccount(this.accountList.get(i));
 			}
