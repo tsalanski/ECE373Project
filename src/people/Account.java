@@ -9,8 +9,8 @@ public class Account {
 	private String password;
 	private String email;
 	private ArrayList<CreditCard> creditCardList;
-	private ArrayList<PurchasedTicket> purchasedTicketList;
-	private ArrayList<ReservedTicket> reservedTicketList;
+	//private ArrayList<PurchasedTicket> purchasedTicketList;
+	//private ArrayList<ReservedTicket> reservedTicketList;
 	
 	// constructor
 	public Account() {
@@ -18,8 +18,8 @@ public class Account {
 		this.password = "\0";
 		this.email = "\0";
 		this.creditCardList = new ArrayList<CreditCard>();
-		this.purchasedTicketList = new ArrayList<PurchasedTicket>();
-		this.reservedTicketList = new ArrayList<ReservedTicket>();
+		//this.purchasedTicketList = new ArrayList<PurchasedTicket>();
+		//this.reservedTicketList = new ArrayList<ReservedTicket>();
 	}
 	
 	// setters
@@ -53,26 +53,26 @@ public class Account {
 		return this.creditCardList;
 	}
 	
-	public ArrayList<PurchasedTicket> getPurchasedTicketList(){
+	/*public ArrayList<PurchasedTicket> getPurchasedTicketList(){
 		return this.purchasedTicketList;
 	}
 	
 	public ArrayList<ReservedTicket> getReservedTicketList(){
 		return this.reservedTicketList;
-	}
+	}*/
 	
 	// methods
 	public void addCreditCard(CreditCard newCard) {
 		this.creditCardList.add(newCard);
 	}
 	
-	public void addPurchasedTicket(PurchasedTicket newTicket) {
+	/*public void addPurchasedTicket(PurchasedTicket newTicket) {
 		this.purchasedTicketList.add(newTicket);
 	}
 	
 	public void addReservedTicket(ReservedTicket newTicket) {
 		this.reservedTicketList.add(newTicket);
-	}
+	}*/
 	
 	// checks if user entered the correct email format
 	public boolean checkEmailFormat(String str) {

@@ -10,6 +10,7 @@ public abstract class ConcertTicket extends Concert{
 	
 	//Constructors
 	public ConcertTicket() {
+		super();
 		this.price = -1.0;
 		this.seat = -1;
 		//this.purchased = new PurchasedTicket();

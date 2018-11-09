@@ -70,7 +70,7 @@ public class Driver1 {
 				if(option.compareTo("L") == 0) {
 					System.out.println("You are registering as a Listener\n");
 					
-					System.out.print("Please enter your fullname:  ");
+					System.out.print("Please enter your name (no spaces):  ");
 					String fullname = "\0";
 					fullname = user_input.next();
 					
@@ -78,7 +78,7 @@ public class Driver1 {
 					Listener user0 = new Listener();
 					user0.setName(fullname);
 					
-					// needs to check if user entered the correct birtyday format
+					// needs to check if user entered the correct birthday format
 					boolean error = false;
 					while(error == false) {
 						System.out.println("Please enter your birthday:  ");
@@ -231,12 +231,12 @@ public class Driver1 {
 				//drop down menu when we build the GUI to choose between Facebook and Twitter?
 				System.out.println("Purchase Complete\n");
 				SocialMedia media = new SocialMedia();
-				ConcertTicket purTicket = new ConcertTicket();
+				//ConcertTicket purTicket = new ConcertTicket(20.0, 1);
 				System.out.println("Share to Facebook/Twitter?");
 				Scanner scanner = new Scanner( System.in );
 				String input = scanner.nextLine();
 				media.setPlatform(input);
-				media.share(purTicket);
+				//media.share(purTicket);
 				break;
 			default:
 					break;
