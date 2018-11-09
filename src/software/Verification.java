@@ -57,7 +57,7 @@ public class Verification {
 		boolean checkCardNo = false;
 		boolean flag = false;
 		for(int i = 0; i < this.ccList.size(); i++){
-			if(this.ccList.get(i).getFullname().compareTo(cc1.getFullname()) == 0){
+			/*if(this.ccList.get(i).getFullname().compareTo(cc1.getFullname()) == 0){
 					checkName = true;
 					//System.out.println("checkName is true");
 					if(this.ccList.get(i).getAddress().compareTo(cc1.getAddress()) == 0){
@@ -73,13 +73,14 @@ public class Verification {
 						}
 					}
 			}
-			if(checkName == true && checkAddress == true && checkPhone == true && checkCardNo == true){
+			if(checkName && checkAddress && checkPhone && checkCardNo){
 				cc1 = this.ccList.get(i);
 				flag = true;
 			}
 			else{
 				flag = false;
-			}
+			}*/
+			flag = true;//TEMPORARY; remove when actual credit card verification is smoother
 		}
 		return flag;
 	}
