@@ -59,11 +59,15 @@ public class Verification {
 		for(int i = 0; i < this.ccList.size(); i++){
 			if(this.ccList.get(i).getFullname().compareTo(cc1.getFullname()) == 0){
 					checkName = true;
+					//System.out.println("checkName is true");
 					if(this.ccList.get(i).getAddress().compareTo(cc1.getAddress()) == 0){
+						//System.out.println("checkAddress is true");
 						checkAddress = true;
-						if(this.ccList.get(i).getPhoneNo() == cc1.getPhoneNo()){
+						if(this.ccList.get(i).getPhoneNo().compareTo(cc1.getPhoneNo()) == 0){
+							//System.out.println("checkPhone is true");
 							checkPhone = true;
-							if(this.ccList.get(i).getCardNo() == cc1.getCardNo()){
+							if(this.ccList.get(i).getCardNo().compareTo(cc1.getCardNo()) == 0){
+								//System.out.println("checkCardNo is true");
 								checkCardNo = true;
 							}
 						}

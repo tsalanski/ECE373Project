@@ -23,8 +23,8 @@ public class Driver1 {
 		
 		String ccName = "\0";							// Credit Card information entries:
 		String ccAddress = "\0";
-		int ccPhone = 0;
-		int ccNo = 0;
+		String ccPhone = "\0";
+		String ccNo = "\0";
 		
 		Random rand = new Random();						// Generate random number
 		
@@ -66,8 +66,9 @@ public class Driver1 {
 		ticket2.setLocation("Phoenix");
 		venue.setConcerts(ticket2);
 		
-		CreditCard cc0 = new CreditCard("admin", "123 New St.", 123456789, 987654321);
+		CreditCard cc0 = new CreditCard("admin", "123 New St.", "123456789", "987654321");
 		userL.getAccount().addCreditCard(cc0);
+		verify.setNewCreditCard(cc0);
 		
 		// Program starts here:
 		while(exit == false) 
@@ -204,8 +205,9 @@ public class Driver1 {
 				// Valid user is taken to the "Music Venue" (main page)
 				// Invalid user is taken to the "Access Denied" Page and returns to the Login page
 				System.out.println("Verification\n");
-				System.out.println("Verifying User...\n");
+				
 				if(verifyType == 1) {	// 1: user verification
+					System.out.println("Verifying User...\n");
 					if(verify.verifyUser(user0, username, password) == true) {
 						pageNo = 4;		// Goto "Music Venue" page
 						break;
@@ -219,7 +221,7 @@ public class Driver1 {
 					System.out.println("Verifying Credit Card Information...\n");
 					if(verify.verifyCard(cc1) == true) {
 						newPurchased = venue.getConcert().get(index);
-						pageNo = 10;	// Goto "Purchase Complete" page
+						pageNo = 9;	// Goto "Purchase Complete" page
 						break;
 					}else {
 						System.out.println("Invalid credit card, returning to previous page\n");
@@ -321,12 +323,9 @@ public class Driver1 {
 				System.out.print("Please enter your Credit Card Address:  ");
 				ccAddress = user_input.nextLine();
 				System.out.print("Please enter your Credit Card Phone number:  ");
-				String buffer;
-				buffer = user_input.nextLine();
-				ccPhone = Integer.parseInt(buffer);
+				ccPhone = user_input.nextLine();
 				System.out.print("Please enter your Credit Card number:  ");
-				buffer = user_input.nextLine();
-				ccNo = Integer.parseInt(buffer);
+				ccNo = user_input.nextLine();
 				
 				cc1.setFullname(ccName);
 				cc1.setAddress(ccAddress);
