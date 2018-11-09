@@ -47,6 +47,12 @@ public class Driver1 {
 		ticket.setDate(8);
 		ticket.setLocation("Tucson");
 		venue.setConcerts(ticket);
+		account1.setUsername("admin");
+		account1.setPassword("12345");
+		account1.setEmail("admin@emai.com");
+		User userL = new Listener();
+		userL.setAccount(account1);
+		verify.setNewAccount(account1);
 		
 		ticket.setPrice(105.00);
 		ticket.setSeat(11);
@@ -55,6 +61,23 @@ public class Driver1 {
 		ticket.setDate(15);
 		ticket.setLocation("Phoenix");
 		venue.setConcerts(ticket);
+		ConcertTicket ticket1 = new ConcertTicket();
+		ticket1.setPrice(175.00);
+		ticket1.setSeat(52);
+		ticket1.setConcertName("Concert No. 1");
+		ticket1.setAvailableSeat(100);
+		ticket1.setDate(8);
+		ticket1.setLocation("Tucson");
+		venue.setConcerts(ticket1);
+		
+		ConcertTicket ticket2 = new ConcertTicket();
+		ticket2.setPrice(105.00);
+		ticket2.setSeat(11);
+		ticket2.setConcertName("Concert No. 2");
+		ticket2.setAvailableSeat(50);
+		ticket2.setDate(15);
+		ticket2.setLocation("Phoenix");
+		venue.setConcerts(ticket2);
 		
 		// Program starts here:
 		while(exit == false) 
