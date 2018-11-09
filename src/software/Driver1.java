@@ -65,15 +65,6 @@ public class Driver1 {
 		ticket2.setLocation("Phoenix");
 		venue.setConcerts(ticket2);
 		
-		ConcertTicket ticket2 = new ConcertTicket();
-		ticket2.setPrice(105.00);
-		ticket2.setSeat(11);
-		ticket2.setConcertName("Concert No. 2");
-		ticket2.setAvailableSeat(50);
-		ticket2.setDate(15);
-		ticket2.setLocation("Phoenix");
-		venue.setConcerts(ticket2);
-		
 		// Program starts here:
 		while(exit == false) 
 		{
