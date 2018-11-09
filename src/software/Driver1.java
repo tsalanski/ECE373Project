@@ -54,13 +54,6 @@ public class Driver1 {
 		userL.setAccount(account1);
 		verify.setNewAccount(account1);
 		
-		ticket.setPrice(105.00);
-		ticket.setSeat(11);
-		ticket.setConcertName("Concert No. 2");
-		ticket.setAvailableSeat(50);
-		ticket.setDate(15);
-		ticket.setLocation("Phoenix");
-		venue.setConcerts(ticket);
 		ConcertTicket ticket1 = new ConcertTicket();
 		ticket1.setPrice(175.00);
 		ticket1.setSeat(52);
