@@ -183,7 +183,7 @@ public class Driver1 {
 					System.out.println("Verifying Credit Card Information...\n");
 					CreditCard cc1 = new CreditCard(ccName, ccAddress, ccPhone, ccNo);
 					if(verify.verifyCard(cc1) == true) {
-						newPurchased = venue.getConcerts().get(index);
+						newPurchased = venue.getConcert().get(index);
 						pageNo = 10;	// Goto "Purchase Complete" page
 					}else {
 						System.out.println("Invalid credit card, returning to previous page\n");
@@ -206,7 +206,7 @@ public class Driver1 {
 				option = user_input.next();
 				
 				if(option.compareTo("R") == 0) {
-					newReserved = venue.getConcerts().get(index);
+					newReserved = venue.getConcert().get(index);
 					if(newReserved.checkAvailableSeats() == false) {
 						System.out.println("No seats available, please try again at a later time.\n");
 					}else {
@@ -214,7 +214,7 @@ public class Driver1 {
 						pageNo = 7;
 					}
 				}else if(option.compareTo("P") == 0) {
-					newPurchased = venue.getConcerts().get(index);
+					newPurchased = venue.getConcert().get(index);
 					if(newPurchased.checkAvailableSeats() == false) {
 						System.out.println("No seats available, please try again at a later time.\n");
 					}else {
@@ -222,7 +222,7 @@ public class Driver1 {
 					}
 				}
 				
-				MusicVenue venue = new MusicVenue();
+				MusicVenue venue2 = new MusicVenue();
 				venue.printConcertList();
 				venue.exit();
 				break;
