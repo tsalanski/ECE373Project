@@ -11,6 +11,7 @@ public class Account {
 	private ArrayList<CreditCard> creditCardList;
 	private ArrayList<Concert> purchasedTicketList;
 	private ArrayList<Concert> reservedTicketList;
+
 	
 	// constructor
 	public Account() {
@@ -54,12 +55,7 @@ public class Account {
 	}
 	
 	public ArrayList<Concert> getPurchasedTicketList(){
-		return this.purchasedTicketList;
-	}
-	
-	public ArrayList<Concert> getReservedTicketList(){
-		return this.reservedTicketList;
-	}
+
 	
 	// methods
 	public void addCreditCard(CreditCard newCard) {
@@ -72,7 +68,7 @@ public class Account {
 	
 	public void addReservedTicket(Concert newTicket) {
 		this.reservedTicketList.add(newTicket);
-	}
+	}*/
 	
 	// checks if user entered the correct email format
 	public boolean checkEmailFormat(String str) {

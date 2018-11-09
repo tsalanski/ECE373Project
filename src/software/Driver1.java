@@ -5,6 +5,7 @@ import hardware.*;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.io.InputStreamReader;
 
 
 public class Driver1 {
@@ -82,15 +83,15 @@ public class Driver1 {
 				if(option.compareTo("L") == 0) {
 					System.out.println("You are registering as a Listener\n");
 					
-					System.out.print("Please enter your fullname:  ");
+					System.out.print("Please enter your name (no spaces):  ");
 					String fullname = "\0";
 					fullname = user_input.next();
 					user0.setName(fullname);
 					
-					// needs to check if user entered the correct birtyday format
+					// needs to check if user entered the correct birthday format
 					boolean error = false;
 					while(error == false) {
-						System.out.println("Please enter your birthday:  ");
+						System.out.println("Please enter your birthday as an 8-digit number (MMDDYYYY):  ");
 						String birthday = "\0";
 						birthday = user_input.next();
 						error = user0.checkBirthdayFormat(birthday);
@@ -122,7 +123,7 @@ public class Driver1 {
 				}
 				else if(option.compareTo("M") == 0) {
 					System.out.println("You are registering as a Musician\n");
-					System.out.print("Please enter your fullname:  ");
+					System.out.print("Please enter your name (no spaces):  ");
 					String fullname = "\0";
 					fullname = user_input.next();
 					user1.setName(fullname);
@@ -130,7 +131,7 @@ public class Driver1 {
 					// needs to check if user entered the correct birtyday format
 					boolean error = false;
 					while(error == false) {
-						System.out.println("Please enter your birthday:  ");
+						System.out.println("Please enter your birthday as an 8-digit number (MMDDYYYY):  ");
 						String birthday = "\0";
 						birthday = user_input.next();
 						error = user1.checkBirthdayFormat(birthday);
@@ -220,8 +221,25 @@ public class Driver1 {
 						pageNo = 8;
 					}
 				}
-
-////////// RESERVED ////////// RESERVED  ////////// RESERVED ////////// RESERVED //////////		
+				
+				MusicVenue venue = new MusicVenue();
+				venue.printConcertList();
+				venue.exit();
+				break;
+			case 5:
+				// Display Concerts page:  User can sort by categories: genre, artist, city
+				// User may choose Concert Tickets, this takes them to "Display Concert Ticket" page displaying the ticket information
+				// User may choose to return to previous page which takes them back to "Music Venue" page
+				System.out.println("Concerts\n");
+				MusicVenue venue1 = new MusicVenue();
+				venue1.sort();
+				break;
+			case 6:
+				// Display Concert Tickets page:  User have the option to reserve/purchase ticket
+				// Reserve & purchase requires to verify the number of available seats before proceeding "Reservation Complete" page
+				System.out.println("Concert Ticket\n");
+				break;
+  ////////// RESERVED ////////// RESERVED  ////////// RESERVED ////////// RESERVED //////////		
 			case 7:
 				// Reservation Complete page: Displays successful reservation notification
 				// Update the available seats
@@ -262,14 +280,24 @@ public class Driver1 {
 				// Purchase Complete page: Displays successful purchased notification
 				// Update the available seats
 				// User has the option to share on social media or return to main page
+				
+				//drop down menu when we build the GUI to choose between Facebook and Twitter?
 				System.out.println("Purchase Complete\n");
 				
 				// update available seating
 				newPurchased.setAvailableSeat(-1);
 				
 				pageNo = 4;		// Goes back to "Music Venue" page
-				
-/////////////////////////////////////////////////////////////////////////////////////////////////////				
+				SocialMedia media = new SocialMedia();
+				//ConcertTicket purTicket = new ConcertTicket(20.0, 1);
+				System.out.println("Share to Facebook/Twitter?");
+				Scanner scanner = new Scanner( System.in );
+				String input = scanner.nextLine();
+				media.setPlatform(input);
+				//media.share(purTicket);
+				break;
+         
+ /////////////////////////////////////////////////////////////////////////////////////////////////////				
 			default:
 					break;
 			}
