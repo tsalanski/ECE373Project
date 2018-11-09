@@ -57,9 +57,9 @@ public class Verification {
 		boolean checkCardNo = false;
 		boolean flag = false;
 		for(int i = 0; i < this.ccList.size(); i++){
-			if(this.ccList.get(i).getFullname() == cc1.getFullname()){
+			if(this.ccList.get(i).getFullname().compareTo(cc1.getFullname()) == 0){
 					checkName = true;
-					if(this.ccList.get(i).getAddress() == cc1.getAddress()){
+					if(this.ccList.get(i).getAddress().compareTo(cc1.getAddress()) == 0){
 						checkAddress = true;
 						if(this.ccList.get(i).getPhoneNo() == cc1.getPhoneNo()){
 							checkPhone = true;

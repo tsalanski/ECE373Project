@@ -32,7 +32,7 @@ public abstract class Concert {
 	}
 	
 	public void setAvailableSeat(int num) {
-		this.availableSeat += num;
+		this.availableSeat = num;
 	}
 	
 	public String getConcertName() {
@@ -80,5 +80,9 @@ public abstract class Concert {
 		}else {
 			return false;
 		}
+	}
+	
+	public void removeAvailableSeats() {
+		this.availableSeat = this.availableSeat - 1;
 	}
 }

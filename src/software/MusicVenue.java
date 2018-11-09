@@ -58,14 +58,14 @@ public class MusicVenue {
 	}
 	
 	public void printConcertList() {
-		int i = 0;
 		int count = 0;
-		for (i = 0; i < this.concerts.size(); i++) {
+		for (int i = 0; i < this.concerts.size(); i++) {
 			count++;
-			System.out.println(count + ")" + this.concerts.get(i).getConcertName()
-							   + "\n\tLocation:\t" + this.concerts.get(i).getLocation()
-							   + "\n\tDate:\t" + this.concerts.get(i).getDate()
-							   + "\n\tPrice:\t" + "$" + this.concerts.get(i).getPrice() + "\n\n");
+			System.out.println(count + ") " + this.concerts.get(i).getConcertName()
+							   + "\n   Location:\t" + this.concerts.get(i).getLocation()
+							   + "\n   Date:\t\t" + this.concerts.get(i).getDate()
+							   + "\n   Price:\t\t" + "$" + this.concerts.get(i).getPrice() 
+							   + "\n   Remainging seats:\t" + this.concerts.get(i).getAvailableSeat() +"\n\n");
 		}
 	}
 	
