@@ -6,7 +6,7 @@ public abstract class Concert {
 	private String concertName;
 	private String location;
 	private int availableSeat;
-	private int date;
+	private String date;
 	private Category categories;
 	
 	//Constructors
@@ -14,14 +14,14 @@ public abstract class Concert {
 		this.concertName = "\0";
 		this.location = "No location";
 		this.availableSeat = -1;
-		this.date = -1;
+		this.date = null;
 		this.categories = new Category();
 	}
 	
 	public Concert(String location, int seat, int date, Category categories) {
 		super();
 		this.location = location;
-		this.date = date;
+		this.setDate(date);
 		this.availableSeat = seat;
 		this.categories = categories;
 	}	
@@ -51,12 +51,17 @@ public abstract class Concert {
 		this.location = location;
 	}
 
-	public int getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(int date) {
-		this.date = date;
+	public void setDate(int fourDigit) {
+		String str = "";
+		String[] month = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+		int m = fourDigit/100;
+		int d = fourDigit - 100*m;
+		str += "Date:\t" + month[m] + " " + d + "," + "2018";
+		this.date = str;
 	}
 
 	public Category getCategories() {
@@ -79,7 +84,7 @@ public abstract class Concert {
 		String[] month = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
 		int m = fourDigit/100;
 		int d = fourDigit - 100*m;
-		System.out.println(month[m] + " " + d + "," + "2018");
+		System.out.println("Date:\t" + month[m] + " " + d + "," + "2018");
 	}
 	
 	public boolean checkAvailableSeats() {
