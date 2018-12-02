@@ -4,5 +4,7 @@ import people.*;
 import hardware.*;
 
 public class Driver2 {
-	JavaJamsGUI j = new JavaJamsGUI();
+	public static void main(String[] args) {
+		JavaJamsGUI j = new JavaJamsGUI("JAVA JAMS");
+	}
 }
