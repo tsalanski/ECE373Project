@@ -76,8 +76,8 @@ public class Account {
 	
 	// checks if user entered the correct email format
 	public boolean checkEmailFormat(String str) {
-		// user's email should contain ".com"
-		if(str.contains("@") == true && str.contains(".com") == true) {
+		// user's email should contain ".com", ".edu", "@"
+		if(str.contains("@") == true && str.contains(".com") == true && str.contains(".edu") == true) {
 			this.setEmail(str);
 			return true;
 		}else {
@@ -114,7 +114,7 @@ public class Account {
 			}
 		}
 		
-		// Prints reserved tickets
+		// Prints purchased tickets
 		System.out.println("Your Purchased Tickets:\n");
 		if(this.purchasedTicketList.isEmpty()) {
 			System.out.println("You have not purchased any tickets.\n");
