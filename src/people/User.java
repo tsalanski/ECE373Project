@@ -54,12 +54,12 @@ public abstract class User {
 	// methods
 	public boolean checkBirthdayFormat(String str) {
 		// user should enter in the following format: MMDDYYYY
-		if(Pattern.matches("[0-9]+", str) && str.length() != 8) {
-			System.out.println("\nIncorrect format entered by user: please try again.\n");
-			return false;
-		}else {
+		if(Pattern.matches("[0-9]+", str) && str.length() == 8) {
 			this.setBirthday(Integer.parseInt(str));
 			return true;
+		}else {
+			System.out.println("\nIncorrect format entered by user: please try again.\n");
+			return false;
 		}
 	}
 }

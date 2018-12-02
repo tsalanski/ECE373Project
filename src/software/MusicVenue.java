@@ -68,8 +68,4 @@ public class MusicVenue {
 							   + "\n   Remainging seats:\t" + this.concerts.get(i).getAvailableSeat() +"\n\n");
 		}
 	}
-	
-	public void exit() {
-		//exits the music venue screen and takes the user back to the main menu
-	}
 }
