@@ -1,3 +1,5 @@
+//JavaJams rocks!
+
 package people;
 
 import java.util.regex.Pattern;
