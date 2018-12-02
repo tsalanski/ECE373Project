@@ -68,10 +68,18 @@ public abstract class Concert {
 	}
 	
 	//Print functions
-	public void printConcertInfo() {
+	public void printConcertInfo(int fourDigit) {
 		System.out.println("Concert Name:\t" + this.concertName);
 		System.out.println("Location:\t" + this.location);
-		System.out.println("Date:\t" + this.date);
+		printDate(fourDigit);
+	}
+	
+	// format MMDD
+	public void printDate(int fourDigit) {
+		String[] month = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+		int m = fourDigit/100;
+		int d = fourDigit - 100*m;
+		System.out.println(month[m] + " " + d + "," + "2018");
 	}
 	
 	public boolean checkAvailableSeats() {

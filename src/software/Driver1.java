@@ -344,6 +344,7 @@ public class Driver1 {
 				
 				//drop down menu when we build the GUI to choose between Facebook and Twitter?
 				System.out.println("Purchase Complete\n");
+				user0.getAccount().addPurchasedTicket(newPurchased);
 				
 				// update available seating
 				newPurchased.removeAvailableSeats();
