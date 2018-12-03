@@ -20,10 +20,15 @@ public class JavaJamsGUI extends JFrame {
 	private JMenuItem exit;
 	private JMenuItem register;
 	
+	
+	// Print submenus
+	
+	private JMenuItem venue;
+	
 	private int ticketNum = 0; //Use for debugging
 	
 	public JLabel welcome = new JLabel("<HTML><center>Welcome to JavaJams!" +
-			"<BR><BR>Register an account or log in from an existing one.</center></HTML>");
+			"<BR><BR>Register an account or log in from an existing one.</center></HTML>"); //welcome text
 	
 	public JavaJamsGUI(String windowTitle) {
 		super(windowTitle);
@@ -36,7 +41,7 @@ public class JavaJamsGUI extends JFrame {
 				"<BR>Register an account or log in from an existing one.</center></HTML>"));*/
 		
 		add(welcome);
-		welcome.setFont(new Font("Serif", Font.PLAIN, 36));
+		welcome.setFont(new Font("Serif", Font.PLAIN, 36)); //make welcome text bigger
 		
 		//fitToWindow(); //Whenever window is resized, fits text to window size
 		
@@ -56,15 +61,21 @@ public class JavaJamsGUI extends JFrame {
 		load = new JMenuItem("Load");
 		exit = new JMenuItem("Exit");
 		
+		venue = new JMenuItem("Venue");
+		
 		register.addActionListener(new MenuListener());
 		save.addActionListener(new MenuListener());
 		load.addActionListener(new MenuListener());
 		exit.addActionListener(new MenuListener());
 		
+		venue.addActionListener(new MenuListener());
+		
 		file.add(register);
 		file.add(save);
 		file.add(load);
 		file.add(exit);
+		
+		print.add(venue);
 		
 		menuBar.add(file);
 	    menuBar.add(print);
@@ -75,6 +86,8 @@ public class JavaJamsGUI extends JFrame {
 	private class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JMenuItem source = (JMenuItem)(e.getSource());
+			
+			int m = 0;// used for error loops
 			
 			if(source.equals(save)) {
 				System.out.println("Data Saved!");
@@ -88,7 +101,7 @@ public class JavaJamsGUI extends JFrame {
 			else if(source.equals(register)) {
 				handleRegister();
 			}
-			else if(source.equals(print)) {
+			else if(source.equals(venue)) {
 				handlePrintTicket();
 			}
 			//else if(source.equals())
@@ -97,36 +110,35 @@ public class JavaJamsGUI extends JFrame {
 		private void handleRegister() {
 			String regName;
 			
-			regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Input Dept", JOptionPane.QUESTION_MESSAGE);
+			regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Enter Name", JOptionPane.QUESTION_MESSAGE);
 			
-			if(regName != null) {
+			if(regName != null) {	
 				if(regName.trim().equals("")) {
 					JOptionPane.showMessageDialog(null, 
 												"Username not valid.", 
 												"Please enter a valid username.", 
-												JOptionPane.PLAIN_MESSAGE);
+												JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					System.out.println("Entered in a username");
-					
+					//m++; //Exit out of error loop
 					//Welcome to JavaJams
-					JOptionPane.showMessageDialog(null, 
-							"Welcome to JavaJams!");
+					JOptionPane.showMessageDialog(null, "Username Accepted\nWelcome to JavaJams!");
 				}
 			}
 		}
 		
 		private void handlePrintTicket() {
-			if(ticketNum < 10) {
+			if(ticketNum < 3) {
 				System.out.println("Printing ticket...");
 				System.out.println(ticketNum);
 				ticketNum++;
 			}
 			else {
 				JOptionPane.showMessageDialog(null, 
-						"Not logged in", 
-						"Error; too many tickets", 
-						JOptionPane.PLAIN_MESSAGE);
+						"Too many tickets", 
+						"Error", 
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}	
 	}
