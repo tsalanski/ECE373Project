@@ -10,6 +10,8 @@ import hardware.*;
 
 public class JavaJamsGUI extends JFrame {
 	private JMenuBar menuBar;
+	private JPanel panel;
+	
 	private JMenu file;
 	private JMenu print;
 	
@@ -18,12 +20,19 @@ public class JavaJamsGUI extends JFrame {
 	private JMenuItem save;
 	private JMenuItem load;
 	private JMenuItem exit;
-	private JMenuItem register;
-	
+	//private JMenuItem register;
 	
 	// Print submenus
 	
 	private JMenuItem venue;
+	
+	//Login and Register
+	private JButton login;
+	private JButton register;
+	
+	//Seats
+	
+	private JButton seat;
 	
 	private int ticketNum = 0; //Use for debugging
 	
@@ -46,29 +55,44 @@ public class JavaJamsGUI extends JFrame {
 		//fitToWindow(); //Whenever window is resized, fits text to window size
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exits GUI when 'X' is clicked
-		buildGUI();	
+		
+		
+		buildGUI();
+		
+		add(panel);
+		
 		setVisible(true);
 	}
 	
 	public void buildGUI() {
 		menuBar = new JMenuBar();
-     	
+     	panel = new JPanel();
+		
 		file = new JMenu("File");
 		print = new JMenu("Print");
+		seat = new JButton("Seat");
 		
-		register = new JMenuItem("Register");
+		login = new JButton("Login");
+		register = new JButton("Register");
+		
+		//register = new JMenuItem("Register");
 		save = new JMenuItem("Save");
 		load = new JMenuItem("Load");
 		exit = new JMenuItem("Exit");
 		
 		venue = new JMenuItem("Venue");
 		
-		register.addActionListener(new MenuListener());
+		//register.addActionListener(new MenuListener());
 		save.addActionListener(new MenuListener());
 		load.addActionListener(new MenuListener());
 		exit.addActionListener(new MenuListener());
 		
 		venue.addActionListener(new MenuListener());
+		
+		//seat.addActionListener(new MenuListener());
+		login.addActionListener(new loginButtonListener());
+		register.addActionListener(new registerButtonListener());
+		
 		
 		file.add(register);
 		file.add(save);
@@ -80,14 +104,17 @@ public class JavaJamsGUI extends JFrame {
 		menuBar.add(file);
 	    menuBar.add(print);
 	    
-		setJMenuBar(menuBar);
+	    panel.add(login);
+	    panel.add(register);
+	    
+	    setJMenuBar(menuBar);
 	}
 	
 	private class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JMenuItem source = (JMenuItem)(e.getSource());
 			
-			int m = 0;// used for error loops
+			//int m = 0;// used for error loops --- actually don't do this, use a JButton; else infinite loop
 			
 			if(source.equals(save)) {
 				System.out.println("Data Saved!");
@@ -121,7 +148,7 @@ public class JavaJamsGUI extends JFrame {
 				}
 				else {
 					System.out.println("Entered in a username");
-					//m++; //Exit out of error loop
+					//m++; //Exit out of error loop --- yo this doesn't work exactly
 					//Welcome to JavaJams
 					JOptionPane.showMessageDialog(null, "Username Accepted\nWelcome to JavaJams!");
 				}
@@ -143,6 +170,17 @@ public class JavaJamsGUI extends JFrame {
 		}	
 	}
 	
+	private class loginButtonListener implements ActionListener {
+      public void actionPerformed(ActionEvent e) {
+         JOptionPane.showMessageDialog(null, "Login!");
+      }
+	}
+	
+	private class registerButtonListener implements ActionListener {
+      public void actionPerformed(ActionEvent e) {
+         JOptionPane.showMessageDialog(null, "Register!");
+      }
+	}
 	
 	//Fits words to window. Could be expanded for any situation
 	private void fitToWindow() {
