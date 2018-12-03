@@ -22,15 +22,24 @@ public class JavaJamsGUI extends JFrame {
 	
 	private int ticketNum = 0; //Use for debugging
 	
+	public JLabel welcome = new JLabel("<HTML><center>Welcome to JavaJams!" +
+			"<BR><BR>Register an account or log in from an existing one.</center></HTML>");
+	
 	public JavaJamsGUI(String windowTitle) {
 		super(windowTitle);
 
-		setSize(800, 600); //Size of GUI window
+		setSize(735, 600); //Size of GUI window
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		
-		add(new JLabel("<HTML><center>Welcome to the JavaJams!" +
-				"<BR>Register an account or log in from an existing one.</center></HTML>"));
+		/*add(new JLabel("<HTML><center>Welcome to JavaJams!" +
+				"<BR>Register an account or log in from an existing one.</center></HTML>"));*/
+		
+		add(welcome);
+		welcome.setFont(new Font("Serif", Font.PLAIN, 36));
+		
+		//fitToWindow(); //Whenever window is resized, fits text to window size
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exits GUI when 'X' is clicked
 		buildGUI();	
 		setVisible(true);
@@ -99,7 +108,10 @@ public class JavaJamsGUI extends JFrame {
 				}
 				else {
 					System.out.println("Entered in a username");
-					//Do something
+					
+					//Welcome to JavaJams
+					JOptionPane.showMessageDialog(null, 
+							"Welcome to JavaJams!");
 				}
 			}
 		}
@@ -116,6 +128,30 @@ public class JavaJamsGUI extends JFrame {
 						"Error; too many tickets", 
 						JOptionPane.PLAIN_MESSAGE);
 			}
-		}
+		}	
+	}
+	
+	
+	//Fits words to window. Could be expanded for any situation
+	private void fitToWindow() {
+		//Font f = welcome.getFont();
+		String s = welcome.getText();
+		
+		//System.out.println(f.getSize());
+		System.out.println(s);
+		
+		System.out.println(welcome.getWidth());
+		System.out.println(welcome.getFontMetrics(welcome.getFont()).stringWidth(s));
+		
+		//double width = (double)welcome.getWidth() / (double)welcome.getFontMetrics(f).stringWidth(s);
+		double width = (double)welcome.getWidth() / (double)welcome.getFontMetrics(welcome.getFont()).stringWidth(s);
+		int height = welcome.getHeight();
+		System.out.println(width);
+		System.out.println(height);
+		
+		int newFontSize = (int)(welcome.getFont().getSize() * width);
+		newFontSize = Math.min(newFontSize, height);
+		
+		welcome.setFont(new Font(welcome.getFont().getName(), Font.PLAIN, newFontSize));
 	}
 }
