@@ -9,8 +9,8 @@ public class Account {
 	private String password;
 	private String email;
 	private ArrayList<CreditCard> creditCardList;
-	private ArrayList<Concert> purchasedTicketList;
-	private ArrayList<Concert> reservedTicketList;
+	private ArrayList<ConcertTicket> purchasedTicketList;
+	private ArrayList<ConcertTicket> reservedTicketList;
 	
 	// constructor
 	public Account() {
@@ -18,8 +18,8 @@ public class Account {
 		this.password = "\0";
 		this.email = "\0";
 		this.creditCardList = new ArrayList<CreditCard>();
-		this.purchasedTicketList = new ArrayList<Concert>();
-		this.reservedTicketList = new ArrayList<Concert>();
+		this.purchasedTicketList = new ArrayList<ConcertTicket>();
+		this.reservedTicketList = new ArrayList<ConcertTicket>();
 	}
 	
 	// setters
@@ -34,7 +34,6 @@ public class Account {
 	public void setEmail(String str) {
 		this.email = str;
 	}
-	
 	
 	// getters
 	public String getUsername() {
@@ -53,11 +52,11 @@ public class Account {
 		return this.creditCardList;
 	}
 	
-	public ArrayList<Concert> getPurchasedTicketList(){
+	public ArrayList<ConcertTicket> getPurchasedTicketList(){
 		return this.purchasedTicketList;
 	}
 	
-	public ArrayList<Concert> getReservedTicketList(){
+	public ArrayList<ConcertTicket> getReservedTicketList(){
 		return this.reservedTicketList;
 	}
 	
@@ -66,18 +65,18 @@ public class Account {
 		this.creditCardList.add(newCard);
 	}
 	
-	public void addPurchasedTicket(Concert newTicket) {
+	public void addPurchasedTicket(ConcertTicket newTicket) {
 		this.purchasedTicketList.add(newTicket);
 	}
 	
-	public void addReservedTicket(Concert newTicket) {
+	public void addReservedTicket(ConcertTicket newTicket) {
 		this.reservedTicketList.add(newTicket);
 	}
 	
 	// checks if user entered the correct email format
 	public boolean checkEmailFormat(String str) {
 		// user's email should contain ".com", ".edu", "@"
-		if(str.contains("@") == true && str.contains(".com") == true && str.contains(".edu") == true) {
+		if(str.contains("@") == true && (str.contains(".com") == true || str.contains(".edu") == true)) {
 			this.setEmail(str);
 			return true;
 		}else {
@@ -88,9 +87,16 @@ public class Account {
 	
 	// display account info
 	public void displayAccountInfo(User u1) {
-		System.out.println("Account No.:\t" + u1.getAccountNo());
-		System.out.println("Name:\t" + u1.getName());
-		System.out.println("Email:\t" + this.email);
+		System.out.println("Account No.:  " + u1.getAccountNo());
+		String str = "";
+		if(u1.getAccountType() == 1) {
+			str += "Listener";
+		}else if(u1.getAccountType() == 2) {
+				str += "Musician";
+		}
+		System.out.println("Account Type:  " + str);
+		System.out.println("Name:  " + u1.getName());
+		System.out.println("Email:  " + this.email);
 		
 		// Prints saved credit card list
 		System.out.println("Your saved Credit Cards:\n");
@@ -98,7 +104,7 @@ public class Account {
 			System.out.println("You have not saved any Credit Cards in your account.\n");
 		}else {
 			for(int i = 0; i < this.creditCardList.size(); i++) {
-				System.out.println("Credit Card No.:\t" + this.creditCardList.get(i).getCardNo());
+				System.out.println("Credit Card No.:  " + this.creditCardList.get(i).getCardNo());
 			}
 		}
 		
@@ -108,9 +114,7 @@ public class Account {
 			System.out.println("You have not reserved any tickets.\n");
 		}else {
 			for(int i = 0; i < this.reservedTicketList.size(); i++) {
-				System.out.println(this.reservedTicketList.get(i).getConcertName());
-				System.out.println("Location:\t" + this.reservedTicketList.get(i).getLocation());
-				System.out.println("Date:\t" + this.reservedTicketList.get(i).getDate());
+				reservedTicketList.get(i).printTicket();
 			}
 		}
 		
@@ -120,9 +124,7 @@ public class Account {
 			System.out.println("You have not purchased any tickets.\n");
 		}else {
 			for(int i = 0; i < this.purchasedTicketList.size(); i++) {
-				System.out.println(this.purchasedTicketList.get(i).getConcertName());
-				System.out.println("Location:\t" + this.purchasedTicketList.get(i).getLocation());
-				System.out.println("Date:\t" + this.purchasedTicketList.get(i).getDate());
+				purchasedTicketList.get(i).printTicket();
 			}
 		}
 		

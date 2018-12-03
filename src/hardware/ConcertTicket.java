@@ -43,6 +43,9 @@ public class ConcertTicket extends Concert{
 	public void printTicket() {
 		System.out.println("Printing ticket info...");
 		System.out.println("");
+		this.printConcertInfo();
+		System.out.println("Price:\t" + "$" + this.price + "0");
+		System.out.println("Seat No.:\t" + this.seat);
 	}
 	
 	public void purchaseTicket() {

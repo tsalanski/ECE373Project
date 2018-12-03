@@ -64,7 +64,6 @@ public class CreditCard {
 	
 	boolean checkPhoneFormat(String num) {
 		// user should enter 10 digits for a phone number
-		
 		if(num.length() > 10) {
 			return false;
 		}else {

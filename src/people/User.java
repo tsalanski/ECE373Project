@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public abstract class User {
 	// fields
 	private int accountNo;
+	private int accountType; // (1: Listener, 2: Musician)
 	private String name;
 	private int birthday;
 	private Account account;
@@ -14,6 +15,7 @@ public abstract class User {
 	// constructor
 	public User() {
 		this.accountNo = 0;
+		this.accountType = -1;
 		this.name = "\0";
 		this.birthday = 0;
 		this.account = null;
@@ -26,6 +28,10 @@ public abstract class User {
 	
 	public void setName(String str) {
 		this.name = str;
+	}
+	
+	public void setAccountType(int accType) {
+		this.accountType = accType;
 	}
 	
 	public void setBirthday(int num) {
@@ -43,6 +49,10 @@ public abstract class User {
 	
 	public String getName() {
 		return this.name;
+	}
+	
+	public int getAccountType() {
+		return this.accountType;
 	}
 	
 	public int getBirthday() {

@@ -35,8 +35,8 @@ public class Driver1 {
 		CreditCard cc1 = new CreditCard();
 		MusicVenue venue = new MusicVenue();			// create MusicVenue object
 		ConcertTicket ticket = new ConcertTicket();		// create ConcertTicket object
-		Concert newReserved = new ConcertTicket();		// create Concert object for reserved ticket
-		Concert newPurchased = new ConcertTicket();		// create Concert object for purchased ticket
+		ConcertTicket newReserved = new ConcertTicket();		// create Concert object for reserved ticket
+		ConcertTicket newPurchased = new ConcertTicket();		// create Concert object for purchased ticket
 
 		int index = -1;									// indexing for information retrieval
 		
@@ -115,6 +115,7 @@ public class Driver1 {
 				option = user_input.nextLine();
 				
 				if(option.compareTo("L") == 0) {
+					user0.setAccountType(1);
 					System.out.println("You are registering as a Listener\n");
 					
 					System.out.print("Please enter your name (no spaces):  ");
@@ -156,6 +157,7 @@ public class Driver1 {
 					verify.setNewAccount(account1);	
 				}
 				else if(option.compareTo("M") == 0) {
+					user1.setAccountType(2);
 					System.out.println("You are registering as a Musician\n");
 					System.out.print("Please enter your name (no spaces):  ");
 					String fullname = "\0";
@@ -301,11 +303,7 @@ public class Driver1 {
 				// Reservation Complete page: Displays successful reservation notification
 				// Update the available seats
 				// User has the option to share on social media or return to main page
-				System.out.println("Reservation Complete\n");
-				
-				// update available seating
-				newReserved.removeAvailableSeats();
-				
+				System.out.println("Reservation Complete\n");				
 				pageNo = 4;		// Goes back to "Music Venue" page
 				break;
 
