@@ -1,6 +1,7 @@
 package software;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -218,10 +219,16 @@ public class JavaJamsGUI extends JFrame {
 	
 	private class registerButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-         JOptionPane.showMessageDialog(null, "Register!");
-         String regName;
-         regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Enter Name", JOptionPane.QUESTION_MESSAGE);
-			
+		//JOptionPane.showMessageDialog(null, "Register!");
+		
+		String regName;
+		String password1 = "a";
+		String password2 = "b";
+		
+		regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Enter Name", JOptionPane.QUESTION_MESSAGE);
+		
+		
+		
 		if(regName != null) {	
 			if(regName.trim().equals("")) {
 				JOptionPane.showMessageDialog(null, 
@@ -234,6 +241,21 @@ public class JavaJamsGUI extends JFrame {
 				//m++; //Exit out of error loop --- yo this doesn't work exactly
 				//Welcome to JavaJams
 				JOptionPane.showMessageDialog(null, "Username Accepted\nWelcome to JavaJams!");
+			}
+		}
+		
+		//Checks if passwords match
+		while (!Objects.equals(password1, password2)) {
+			password1 = JOptionPane.showInputDialog(null, "Enter a password: ", "Enter Password", JOptionPane.QUESTION_MESSAGE);
+			password2 = regName = JOptionPane.showInputDialog(null, "Re-enter your password: ", "Re-Enter Password", JOptionPane.QUESTION_MESSAGE);
+			if (!Objects.equals(password1, password2)) {
+				JOptionPane.showMessageDialog(null, 
+						"Passwords don't match, try again", 
+						"Error", 
+						JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Password Accepted\nWelcome to JavaJams!");
 			}
 		}
       }
