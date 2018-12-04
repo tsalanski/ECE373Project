@@ -368,7 +368,6 @@ public class JavaJamsGUI extends JFrame {
 	      public void actionPerformed(ActionEvent e) {
 	         int option = JOptionPane.showConfirmDialog(null, "Welcome to Music Venue", "Music Venue", JOptionPane.OK_CANCEL_OPTION);
 		     if (option == JOptionPane.OK_OPTION) {
-
 		    	 //System.out.println("Clicked music venue button");
 		    	 new MusicVenueWindow(); 
 		     } else {
@@ -421,66 +420,14 @@ public class JavaJamsGUI extends JFrame {
 		musicBar.setVisible(true);
 		musicPanel.setVisible(true);
 		f.setVisible(true);
-		p.add(concertInfo);
-		p.add(accountInfo);
-		p.setLayout(new GridBagLayout());
-		accountInfo.setPreferredSize(new Dimension(200, 50));
-		concertInfo.setPreferredSize(new Dimension(200, 50));
-		accountInfo.setFont(new Font("Arial", Font.PLAIN, 20));
-		concertInfo.setFont(new Font("Arial", Font.PLAIN, 20));
-		add(p);
-		setVisible(true);
+		
 		//musicBar = new JMenuBar();
 		
 		
 	}
 	//~~~~~~~~~~~~~ MUSIC VENUE WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	//~~~~~~~~~~~~~ Concert Ticket WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//	public class ticketWindow extends JFrame{
-//		private JPanel newPanel;
-//		
-//		// Menu options
-//		public JButton purchaseButton;
-//		public JButton reserveButton;
-//		
-//		public ticketWindow() {			
-//			JFrame f = new JFrame("Concert Ticket");
-//			newPanel = new JPanel();
-//			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//			f.setSize(440, 400);
-//			setLayout(new FlowLayout(FlowLayout.LEFT));
-//			f.setVisible(true);
-//			purchaseButton = new JButton("Purchase");
-//			reserveButton = new JButton("Reserve");
-//			purchaseButton.addActionListener(new.purchaseButtonListener());
-//			reserveButton.addActionListener(new.reserveButtonListener());
-//			newPanel.add(purchaseButton);
-//			newPanel.add(reserveButton);
-//			purchaseButton.setFont(new Font("Arial", Font.PLAIN, 40));
-//			reserveButton.setFont(new Font("Arial", Font.PLAIN, 40));
-//		}
-//	}
-	//~~~~~~~~~~~~~ Concert Ticket WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-	//~~~~~~~~~~~~~ Purchase WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	public class purchaseButtonListener implements ActionListener {
-	      public void actionPerformed(ActionEvent e) {
-	    	  
-	      }
-	}	
-	//~~~~~~~~~~~~~ Purchase WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-	//~~~~~~~~~~~~~ Reserve WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	public class reserveButtonListener implements ActionListener {
-	      public void actionPerformed(ActionEvent e) {
-	    	  
-	      }
-	}
-	//~~~~~~~~~~~~~ Reserve WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-	
+		
 	//Fits words to window. Could be expanded for any situation
 	private void fitToWindow() {
 		//Font f = welcome.getFont();
