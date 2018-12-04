@@ -45,6 +45,9 @@ public class JavaJamsGUI extends JFrame {
 	private JButton login;
 	private JButton register;
 	
+	//Music Venue
+	private JButton musicVenue;
+	
 	//Seats
 	
 	private JButton seat;
@@ -123,8 +126,12 @@ public class JavaJamsGUI extends JFrame {
 		print = new JMenu("Print");
 		seat = new JButton("Seat");
 		
+		// Login and Registration
 		login = new JButton("Login");
 		register = new JButton("Register");
+		
+		// Music Venue
+		musicVenue = new JButton("Music Venue");
 		
 		//register = new JMenuItem("Register");
 		save = new JMenuItem("Save");
@@ -143,6 +150,7 @@ public class JavaJamsGUI extends JFrame {
 		//seat.addActionListener(new MenuListener());
 		login.addActionListener(new loginButtonListener());
 		register.addActionListener(new registerButtonListener());
+		musicVenue.addActionListener(new musicVenueButtonListener());
 		
 		
 		file.add(register);
@@ -160,19 +168,23 @@ public class JavaJamsGUI extends JFrame {
 	    
 	    panel.add(login);
 	    panel.add(register);
+	    panel.add(musicVenue);
 	    
 	    //Change sizes of buttons
-	    login.setPreferredSize(new Dimension(200, 100));
-	    register.setPreferredSize(new Dimension(200, 100));
+	    login.setPreferredSize(new Dimension(200, 50));
+	    register.setPreferredSize(new Dimension(200, 50));
+	    musicVenue.setPreferredSize(new Dimension(200, 50));
 	    
 	    //Change size of font for text in buttons
-	    login.setFont(new Font("Arial", Font.PLAIN, 40));
-	    register.setFont(new Font("Arial", Font.PLAIN, 40));
+	    login.setFont(new Font("Arial", Font.PLAIN, 20));
+	    register.setFont(new Font("Arial", Font.PLAIN, 20));
+	    musicVenue.setFont(new Font("Arial", Font.PLAIN, 20));
 	    
 	    //Center buttons
 	    
 	    
 	    setJMenuBar(menuBar);
+	    musicVenue.setVisible(false);
 	}
 	
 	private class MenuListener implements ActionListener {
@@ -229,8 +241,14 @@ public class JavaJamsGUI extends JFrame {
         	 String token1 = username.getText();
         	 String token2 = password.getText();
         	 if (verify.verifyUser(user1, token1, token2) == true) {
+        		 JOptionPane.showMessageDialog(null, 
+							"Login successful.", 
+							null, 
+							JOptionPane.ERROR_MESSAGE);
             	 // user logged in...  goto music venue
-                 System.out.println("Login successful");
+        		 login.setVisible(false);
+        		 register.setVisible(false);
+        		 musicVenue.setVisible(true);
              } else {
             	 JOptionPane.showMessageDialog(null, 
 							"Login Failed.", 
@@ -308,6 +326,36 @@ public class JavaJamsGUI extends JFrame {
       }
 	}
 	
+	private class musicVenueButtonListener implements ActionListener {
+	      public void actionPerformed(ActionEvent e) {
+	         JOptionPane.showMessageDialog(null, "Music Venue");
+
+	         int option = JOptionPane.showConfirmDialog(null, null, null, JOptionPane.OK_CANCEL_OPTION);
+		     if (option == JOptionPane.OK_OPTION) {
+		    		 new MusicVenueWindow(); 
+		     } else {
+        
+		     }
+	      }
+	}
+
+	public class MusicVenueWindow extends JFrame{
+		
+		public MusicVenueWindow() {
+			
+			buildMusicVenueWindow();
+		}
+	}
+	
+	public void buildMusicVenueWindow() {
+		JFrame f = new JFrame("Music Venue");
+
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setSize(440, 400);
+		setLayout(new FlowLayout(FlowLayout.LEFT));
+		f.setVisible(true);
+	}
+		
 	//Fits words to window. Could be expanded for any situation
 	private void fitToWindow() {
 		//Font f = welcome.getFont();
