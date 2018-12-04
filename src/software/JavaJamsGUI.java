@@ -368,29 +368,18 @@ public class JavaJamsGUI extends JFrame {
 	      public void actionPerformed(ActionEvent e) {
 	         int option = JOptionPane.showConfirmDialog(null, "Welcome to Music Venue", "Music Venue", JOptionPane.OK_CANCEL_OPTION);
 		     if (option == JOptionPane.OK_OPTION) {
-		    		 new MusicVenueWindow(); 
+		    	 //System.out.println("Clicked music venue button");
+		    	 new MusicVenueWindow(); 
 		     } else {
-        
+		    	 //System.exit(0);
 		     }
 	      }
 	}
 
 	public class MusicVenueWindow extends JFrame{
-		private JMenuBar musicBar;
-		private JPanel musicPanel;
-		
-		// Menu options
-		private JMenu accountInfo;
-		private JMenu concertInfo;
 
-		// Account submenu
-		private JMenuItem showAccountInfo;
-		
-		// Concert submenu
-		private JMenuItem showConcertTicket;
-		
+		//accountInfo.add(showAccountInfo);
 		public MusicVenueWindow() {
-			
 			buildMusicVenueWindow();
 		}
 	}
@@ -398,9 +387,38 @@ public class JavaJamsGUI extends JFrame {
 	public void buildMusicVenueWindow() {
 		JFrame f = new JFrame("Music Venue");
 		
+		JMenuBar musicBar = new JMenuBar();
+		JPanel musicPanel = new JPanel();
+		
+		// Menu options
+		JMenu accountInfo = new JMenu("Account Info");
+		JMenu concertInfo = new JMenu("Concert Info");
+
+		// Account submenu
+		JMenuItem showAccountInfo = new JMenuItem("Show Account Info");
+		
+		// Concert submenu
+		JMenuItem showConcertTicket = new JMenuItem("Show Concert Ticket");
+		
+		showAccountInfo.addActionListener(new MenuListener());
+		showConcertTicket.addActionListener(new MenuListener());
+		
+		accountInfo.add(showAccountInfo);
+		concertInfo.add(showConcertTicket);
+		
+		musicBar.add(accountInfo);
+		musicBar.add(concertInfo);
+		
+		setJMenuBar(musicBar);
+		musicPanel.add(musicBar);
+		f.add(musicPanel);
+		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(440, 400);
 		setLayout(new FlowLayout(FlowLayout.LEFT));
+		
+		musicBar.setVisible(true);
+		musicPanel.setVisible(true);
 		f.setVisible(true);
 		
 		//musicBar = new JMenuBar();
