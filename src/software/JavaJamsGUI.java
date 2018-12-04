@@ -225,7 +225,8 @@ public class JavaJamsGUI extends JFrame {
 	
 	private class loginButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-         //JOptionPane.showMessageDialog(null, "Login!");
+    	  
+    	  //JOptionPane.showMessageDialog(null, "Login!");
          JTextField username = new JTextField();
          JTextField password = new JPasswordField();
          Object[] message = {
@@ -238,25 +239,16 @@ public class JavaJamsGUI extends JFrame {
         	 String token1 = username.getText();
         	 String token2 = password.getText();
         	 if (verify.verifyUser(user1, token1, token2) == true) {
-        		 JOptionPane.showMessageDialog(null, 
-							"Login successful.", 
-							null, 
-							JOptionPane.ERROR_MESSAGE);
+        		 JOptionPane.showMessageDialog(null, "Login successful.", null, JOptionPane.ERROR_MESSAGE);
             	 // user logged in...  goto music venue
         		 login.setVisible(false);
         		 register.setVisible(false);
         		 musicVenue.setVisible(true);
              } else {
-            	 JOptionPane.showMessageDialog(null, 
-							"Login Failed.", 
-							"Invalid username or password.", 
-							JOptionPane.ERROR_MESSAGE);
+            	 JOptionPane.showMessageDialog(null, "Login Failed.", "Invalid username or password.", JOptionPane.ERROR_MESSAGE);
              }
          } else {
-        	 JOptionPane.showMessageDialog(null, 
-						"Login Canceled.", 
-						null, 
-						JOptionPane.ERROR_MESSAGE);
+        	 JOptionPane.showMessageDialog(null, "Login Canceled.", null, JOptionPane.ERROR_MESSAGE);
          }
 
       }
@@ -302,6 +294,7 @@ public class JavaJamsGUI extends JFrame {
 			else {
 				//m++; //Exit out of error loop --- yo this doesn't work exactly
 				//Welcome to JavaJams
+				account1.setUsername(regName);
 				JOptionPane.showMessageDialog(null, "Username Accepted");
 			}
 		}
@@ -317,6 +310,7 @@ public class JavaJamsGUI extends JFrame {
 						JOptionPane.ERROR_MESSAGE);
 			}
 			else {
+				account1.setPassword(password2);
 				JOptionPane.showMessageDialog(null, "Password Accepted\nWelcome to JavaJams!");
 				
 				//Checks if Musician or Listener
@@ -344,24 +338,19 @@ public class JavaJamsGUI extends JFrame {
 			}
 		}
 		
-
-		
 		// save new user info
-		account1.setUsername(regName);
-		account1.setPassword(password2);
-		// need the Listener or Musician options: (1: Listener, 2: Musician)
-		//int tempAccType = 1;
 		int accountNo = 0001;	// Generate new Account No.
 		if(tempAccType == 1) { // Registered as Listener
 			user0.setAccountType(1);
 			user0.setAccountNo(accountNo);
 			user0.setAccount(account1);
+			verify.setNewAccount(account1);
 
 		}else if(tempAccType == 2) { // Registered as Musician
 			user1.setAccountType(2);
 			user1.setAccountNo(accountNo);
 			user1.setAccount(account1);
-
+			verify.setNewAccount(account1);
 		}
       }
 	}
