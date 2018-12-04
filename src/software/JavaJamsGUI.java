@@ -209,7 +209,7 @@ public class JavaJamsGUI extends JFrame {
 												JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					System.out.println("Entered in a username");
+					System.out.println("Entered in a username"); // DEBUG
 					//m++; //Exit out of error loop --- yo this doesn't work exactly
 					//Welcome to JavaJams
 					JOptionPane.showMessageDialog(null, "Username Accepted\nWelcome to JavaJams!");
