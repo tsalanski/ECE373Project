@@ -23,8 +23,8 @@ public class Driver1 {
 		
 		String ccName = "\0";							// Credit Card information entries:
 		String ccAddress = "\0";
-		int ccPhone = 0;
-		int ccNo = 0;
+		String ccPhone = "\0";
+		String ccNo = "\0";
 		
 		Random rand = new Random();						// Generate random number
 		
@@ -32,14 +32,15 @@ public class Driver1 {
 		Musician user1 = new Musician();				// Create new Musician
 		Account account1 = new Account();				// create new Account
 		Verification verify = new Verification();
+		CreditCard cc1 = new CreditCard();
 		MusicVenue venue = new MusicVenue();			// create MusicVenue object
 		ConcertTicket ticket = new ConcertTicket();		// create ConcertTicket object
-		Concert newReserved = new ConcertTicket();		// create Concert object for reserved ticket
-		Concert newPurchased = new ConcertTicket();		// create Concert object for purchased ticket
+		ConcertTicket newReserved = new ConcertTicket();		// create Concert object for reserved ticket
+		ConcertTicket newPurchased = new ConcertTicket();		// create Concert object for purchased ticket
 
 		int index = -1;									// indexing for information retrieval
 		
-		// Initialize Concerts for testing purposes:
+		// Initialize for testing purposes:
 		account1.setUsername("admin");
 		account1.setPassword("12345");
 		account1.setEmail("admin@emai.com");
@@ -65,6 +66,10 @@ public class Driver1 {
 		ticket2.setLocation("Phoenix");
 		venue.setConcerts(ticket2);
 		
+		CreditCard cc0 = new CreditCard("admin", "123 New St.", "123456789", "987654321");
+		userL.getAccount().addCreditCard(cc0);
+		verify.setNewCreditCard(cc0);
+		
 		// Program starts here:
 		while(exit == false) 
 		{
@@ -77,17 +82,17 @@ public class Driver1 {
 				System.out.println("Login\n");
 				System.out.println("Would you like to create a new account or proceed to login?\n");
 				System.out.println("Please enter (new) or (login) to proceed:  ");
-				option = user_input.next();
+				option = user_input.nextLine();
 				
 				if(option.compareTo("new") == 0) {
 					pageNo = 2;	// Goto "Registration" page
 				}
 				else if(option.compareTo("login") == 0) {
 					System.out.print("Enter your user name: ");
-					username = user_input.next();
+					username = user_input.nextLine();
 					
 					System.out.print("Enter your password: ");
-					password = user_input.next();
+					password = user_input.nextLine();
 					
 					pageNo = 3;			// Goto "Verfication" page
 					verifyType = 1;		// Type 1: User verification
@@ -107,14 +112,15 @@ public class Driver1 {
 				System.out.println("Registration\n");
 				System.out.println("Would you like to register as Listener or Musician?");
 				System.out.println("Please enter (L) or (M):  ");
-				option = user_input.next();
+				option = user_input.nextLine();
 				
 				if(option.compareTo("L") == 0) {
+					user0.setAccountType(1);
 					System.out.println("You are registering as a Listener\n");
 					
 					System.out.print("Please enter your name (no spaces):  ");
 					String fullname = "\0";
-					fullname = user_input.next();
+					fullname = user_input.nextLine();
 					user0.setName(fullname);
 					
 					// needs to check if user entered the correct birthday format
@@ -122,7 +128,7 @@ public class Driver1 {
 					while(error == false) {
 						System.out.println("Please enter your birthday as an 8-digit number (MMDDYYYY):  ");
 						String birthday = "\0";
-						birthday = user_input.next();
+						birthday = user_input.nextLine();
 						error = user0.checkBirthdayFormat(birthday);
 					}
 					
@@ -130,10 +136,10 @@ public class Driver1 {
 					user0.setAccountNo(accountNo);
 					
 					System.out.print("Please enter a username for your new account:  ");
-					username = user_input.next();
+					username = user_input.nextLine();
 					
 					System.out.print("Please enter a password for your new account:  ");
-					password = user_input.next();
+					password = user_input.nextLine();
 					
 					account1.setUsername(username);
 					account1.setPassword(password);
@@ -142,7 +148,7 @@ public class Driver1 {
 					while(error == false) {
 						System.out.print("Please enter a email for your new account:  ");
 						String email = "\0";
-						email = user_input.next();
+						email = user_input.nextLine();
 						error = account1.checkEmailFormat(email);
 					}
 					
@@ -151,10 +157,11 @@ public class Driver1 {
 					verify.setNewAccount(account1);	
 				}
 				else if(option.compareTo("M") == 0) {
+					user1.setAccountType(2);
 					System.out.println("You are registering as a Musician\n");
 					System.out.print("Please enter your name (no spaces):  ");
 					String fullname = "\0";
-					fullname = user_input.next();
+					fullname = user_input.nextLine();
 					user1.setName(fullname);
 					
 					// needs to check if user entered the correct birtyday format
@@ -162,7 +169,7 @@ public class Driver1 {
 					while(error == false) {
 						System.out.println("Please enter your birthday as an 8-digit number (MMDDYYYY):  ");
 						String birthday = "\0";
-						birthday = user_input.next();
+						birthday = user_input.nextLine();
 						error = user1.checkBirthdayFormat(birthday);
 					}
 					
@@ -171,10 +178,10 @@ public class Driver1 {
 					user1.setAccountNo(accountNo);
 					
 					System.out.print("Please enter a username for your new account:  ");
-					username = user_input.next();
+					username = user_input.nextLine();
 					
 					System.out.print("Please enter a password for your new account:  ");
-					password = user_input.next();
+					password = user_input.nextLine();
 					
 					account1.setUsername(username);
 					account1.setPassword(password);
@@ -183,7 +190,7 @@ public class Driver1 {
 					while(error == false) {
 						System.out.print("Please enter a email for your new account:  ");
 						String email = "\0";
-						email = user_input.next();
+						email = user_input.nextLine();
 						error = account1.checkEmailFormat(email);
 					}
 					
@@ -200,8 +207,9 @@ public class Driver1 {
 				// Valid user is taken to the "Music Venue" (main page)
 				// Invalid user is taken to the "Access Denied" Page and returns to the Login page
 				System.out.println("Verification\n");
-				System.out.println("Verifying User...\n");
+				
 				if(verifyType == 1) {	// 1: user verification
+					System.out.println("Verifying User...\n");
 					if(verify.verifyUser(user0, username, password) == true) {
 						pageNo = 4;		// Goto "Music Venue" page
 						break;
@@ -213,10 +221,9 @@ public class Driver1 {
 				}
 				else if(verifyType == 2) {	// 2: credit card verification
 					System.out.println("Verifying Credit Card Information...\n");
-					CreditCard cc1 = new CreditCard(ccName, ccAddress, ccPhone, ccNo);
 					if(verify.verifyCard(cc1) == true) {
 						newPurchased = venue.getConcert().get(index);
-						pageNo = 10;	// Goto "Purchase Complete" page
+						pageNo = 9;	// Goto "Purchase Complete" page
 						break;
 					}else {
 						System.out.println("Invalid credit card, returning to previous page\n");
@@ -231,7 +238,7 @@ public class Driver1 {
 				// User may choose to exit the application at anytime which returns them to "Login" page.
 				System.out.println("Music Venue\n");
 				System.out.println("Enter (concert) to browse available concerts or (account) to get account information:  ");
-				option = user_input.next();
+				option = user_input.nextLine();
 				if(option.compareTo("concert") == 0) {
 					pageNo = 5; // Goto "Concerts" page
 				}else if(option.compareTo("account") == 0) {
@@ -244,7 +251,7 @@ public class Driver1 {
 					break;
 				}else {
 					System.out.println("Would you like to exit Music Venue? Please enter: \"Yes\" or \"No\"\n");
-					option = user_input.next();
+					option = user_input.nextLine();
 					if(option.compareTo("Yes") == 0) {
 						pageNo = 1;
 						break;
@@ -264,12 +271,12 @@ public class Driver1 {
 
 				venue.printConcertList();
 				System.out.println("Please enter a number to select Concert: ");
-				option = user_input.next();
-				index = Integer.parseInt(option);
+				option = user_input.nextLine();
+				index = Integer.parseInt(option) - 1;
 				
 				System.out.println("\nWould you like to Reserve or Purchase ticket?\n");
 				System.out.println("Please enter the following options (R) or (P): ");
-				option = user_input.next();
+				option = user_input.nextLine();
 				
 				if(option.compareTo("R") == 0) {
 					newReserved = venue.getConcert().get(index);
@@ -296,11 +303,7 @@ public class Driver1 {
 				// Reservation Complete page: Displays successful reservation notification
 				// Update the available seats
 				// User has the option to share on social media or return to main page
-				System.out.println("Reservation Complete\n");
-				
-				// update available seating
-				newReserved.setAvailableSeat(-1);
-				
+				System.out.println("Reservation Complete\n");				
 				pageNo = 4;		// Goes back to "Music Venue" page
 				break;
 
@@ -314,16 +317,18 @@ public class Driver1 {
 				
 				
 				System.out.print("Please enter your Credit Card Name:  ");
-				ccName = user_input.next();
+				ccName = user_input.nextLine();
 				System.out.print("Please enter your Credit Card Address:  ");
-				ccAddress = user_input.next();
+				ccAddress = user_input.nextLine();
 				System.out.print("Please enter your Credit Card Phone number:  ");
-				String buffer;
-				buffer = user_input.next();
-				ccPhone = Integer.parseInt(buffer);
+				ccPhone = user_input.nextLine();
 				System.out.print("Please enter your Credit Card number:  ");
-				buffer = user_input.next();
-				ccNo = Integer.parseInt(buffer);
+				ccNo = user_input.nextLine();
+				
+				cc1.setFullname(ccName);
+				cc1.setAddress(ccAddress);
+				cc1.setPhoneNo(ccPhone);
+				cc1.setCardNo(ccNo);
 				
 				verifyType = 2;	// Type 2: Credit Card Verification
 				pageNo = 3;	// Goto "Verification" page
@@ -337,9 +342,10 @@ public class Driver1 {
 				
 				//drop down menu when we build the GUI to choose between Facebook and Twitter?
 				System.out.println("Purchase Complete\n");
+				user0.getAccount().addPurchasedTicket(newPurchased);
 				
 				// update available seating
-				newPurchased.setAvailableSeat(-1);
+				newPurchased.removeAvailableSeats();
 				
 				pageNo = 4;		// Goes back to "Music Venue" page
 				SocialMedia media = new SocialMedia();

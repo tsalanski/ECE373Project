@@ -61,15 +61,14 @@ public class MusicVenue {
 		int count = 0;
 		for (int i = 0; i < this.concerts.size(); i++) {
 			count++;
-			System.out.println(count + ") " + this.concerts.get(i).getConcertName()
-							   + "\n   Location:\t" + this.concerts.get(i).getLocation()
-							   + "\n   Date:\t\t" + this.concerts.get(i).getDate()
-							   + "\n   Price:\t\t" + "$" + this.concerts.get(i).getPrice() 
-							   + "\n   Remainging seats:\t" + this.concerts.get(i).getAvailableSeat() +"\n\n");
+//			System.out.println(count + ") " + this.concerts.get(i).getConcertName()
+//							   + "\n   Location:\t" + this.concerts.get(i).getLocation()
+//							   + "\n   Date:\t\t" + this.concerts.get(i).getDate()
+//							   + "\n   Price:\t\t" + "$" + this.concerts.get(i).getPrice() 
+//							   + "\n   Remainging seats:\t" + this.concerts.get(i).getAvailableSeat() +"\n\n");
+		System.out.println(count + ".)");
+		concerts.get(i).printConcertInfo();
+		System.out.println("Price:  $" + concerts.get(i).getPrice() + "0" + "\n");
 		}
-	}
-	
-	public void exit() {
-		//exits the music venue screen and takes the user back to the main menu
 	}
 }

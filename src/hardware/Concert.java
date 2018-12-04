@@ -6,7 +6,7 @@ public abstract class Concert {
 	private String concertName;
 	private String location;
 	private int availableSeat;
-	private int date;
+	private String date;
 	private Category categories;
 	
 	//Constructors
@@ -14,14 +14,14 @@ public abstract class Concert {
 		this.concertName = "\0";
 		this.location = "No location";
 		this.availableSeat = -1;
-		this.date = -1;
+		this.date = null;
 		this.categories = new Category();
 	}
 	
 	public Concert(String location, int seat, int date, Category categories) {
 		super();
 		this.location = location;
-		this.date = date;
+		this.setDate(date);
 		this.availableSeat = seat;
 		this.categories = categories;
 	}	
@@ -32,7 +32,7 @@ public abstract class Concert {
 	}
 	
 	public void setAvailableSeat(int num) {
-		this.availableSeat += num;
+		this.availableSeat = num;
 	}
 	
 	public String getConcertName() {
@@ -51,12 +51,17 @@ public abstract class Concert {
 		this.location = location;
 	}
 
-	public int getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(int date) {
-		this.date = date;
+	public void setDate(int fourDigit) {
+		String str = "";
+		String[] month = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+		int m = fourDigit/100;
+		int d = fourDigit - 100*m;
+		str += month[m] + " " + d + "," + "2018";
+		this.date = str;
 	}
 
 	public Category getCategories() {
@@ -69,9 +74,11 @@ public abstract class Concert {
 	
 	//Print functions
 	public void printConcertInfo() {
-		System.out.println("Concert Name:\t" + this.concertName);
-		System.out.println("Location:\t" + this.location);
-		System.out.println("Date:\t" + this.date);
+		System.out.println("Concert Name:  " + this.concertName);
+		System.out.println("Location:  " + this.location);
+		System.out.println("Date:  " + this.date);
+		System.out.println("Available seats:  " + this.getAvailableSeat());
+		
 	}
 	
 	public boolean checkAvailableSeats() {
@@ -80,5 +87,9 @@ public abstract class Concert {
 		}else {
 			return false;
 		}
+	}
+	
+	public void removeAvailableSeats() {
+		this.availableSeat = this.availableSeat - 1;
 	}
 }

@@ -51,32 +51,14 @@ public class Verification {
 	}
 	
 	public boolean verifyCard(CreditCard cc1) {
-		boolean checkName = false;
-		boolean checkAddress = false;
-		boolean checkPhone = false;
-		boolean checkCardNo = false;
-		boolean flag = false;
-		for(int i = 0; i < this.ccList.size(); i++){
-			if(this.ccList.get(i).getFullname() == cc1.getFullname()){
-					checkName = true;
-					if(this.ccList.get(i).getAddress() == cc1.getAddress()){
-						checkAddress = true;
-						if(this.ccList.get(i).getPhoneNo() == cc1.getPhoneNo()){
-							checkPhone = true;
-							if(this.ccList.get(i).getCardNo() == cc1.getCardNo()){
-								checkCardNo = true;
-							}
-						}
-					}
-			}
-			if(checkName == true && checkAddress == true && checkPhone == true && checkCardNo == true){
-				cc1 = this.ccList.get(i);
-				flag = true;
-			}
-			else{
-				flag = false;
-			}
+		boolean flag = true;
+		int firstNum = cc1.getFirstDig();
+		int creditCardNumSize = cc1.getCreditCardTotDigits();
+		
+		if((firstNum == 3 && creditCardNumSize != 15) || (firstNum == 5 && creditCardNumSize != 16) || (firstNum == 4 && creditCardNumSize != 13) || (firstNum == 4 && creditCardNumSize != 16) || (firstNum == 4 && creditCardNumSize != 19)) {//checking if the cards are American Express, MasterCard, and Visa Cards
+			flag = false;
 		}
+
 		return flag;
 	}
 }
