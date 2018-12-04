@@ -368,9 +368,7 @@ public class JavaJamsGUI extends JFrame {
 	
 	private class musicVenueButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e) {
-	         JOptionPane.showMessageDialog(null, "Music Venue");
-
-	         int option = JOptionPane.showConfirmDialog(null, null, null, JOptionPane.OK_CANCEL_OPTION);
+	         int option = JOptionPane.showConfirmDialog(null, "Welcome to Music Venue", "Music Venue", JOptionPane.OK_CANCEL_OPTION);
 		     if (option == JOptionPane.OK_OPTION) {
 		    		 new MusicVenueWindow(); 
 		     } else {
@@ -380,6 +378,18 @@ public class JavaJamsGUI extends JFrame {
 	}
 
 	public class MusicVenueWindow extends JFrame{
+		private JMenuBar musicBar;
+		private JPanel musicPanel;
+		
+		// Menu options
+		private JMenu accountInfo;
+		private JMenu concertInfo;
+
+		// Account submenu
+		private JMenuItem showAccountInfo;
+		
+		// Concert submenu
+		private JMenuItem showConcertTicket;
 		
 		public MusicVenueWindow() {
 			
@@ -389,11 +399,15 @@ public class JavaJamsGUI extends JFrame {
 	
 	public void buildMusicVenueWindow() {
 		JFrame f = new JFrame("Music Venue");
-
+		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(440, 400);
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		f.setVisible(true);
+		
+		//musicBar = new JMenuBar();
+		
+		
 	}
 		
 	//Fits words to window. Could be expanded for any situation
