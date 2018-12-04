@@ -9,6 +9,16 @@ import people.*;
 import hardware.*;
 
 public class JavaJamsGUI extends JFrame {
+	// Class objects:
+	Listener user0 = new Listener();				// Create new Listener
+	Musician user1 = new Musician();				// Create new Musician
+	Account account1 = new Account();				// create new Account
+	Verification verify = new Verification();
+	CreditCard cc1 = new CreditCard();
+	MusicVenue mvenue = new MusicVenue();			// create MusicVenue object
+	ConcertTicket ticket = new ConcertTicket();		// create ConcertTicket object
+	ConcertTicket newReserved = new ConcertTicket();		// create Concert object for reserved ticket
+	ConcertTicket newPurchased = new ConcertTicket();	
 	
 
 	private JMenuBar menuBar;
