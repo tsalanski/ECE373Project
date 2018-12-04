@@ -51,37 +51,14 @@ public class Verification {
 	}
 	
 	public boolean verifyCard(CreditCard cc1) {
-		boolean checkName = false;
-		boolean checkAddress = false;
-		boolean checkPhone = false;
-		boolean checkCardNo = false;
-		boolean flag = false;
-		for(int i = 0; i < this.ccList.size(); i++){
-			/*if(this.ccList.get(i).getFullname().compareTo(cc1.getFullname()) == 0){
-					checkName = true;
-					//System.out.println("checkName is true");
-					if(this.ccList.get(i).getAddress().compareTo(cc1.getAddress()) == 0){
-						//System.out.println("checkAddress is true");
-						checkAddress = true;
-						if(this.ccList.get(i).getPhoneNo().compareTo(cc1.getPhoneNo()) == 0){
-							//System.out.println("checkPhone is true");
-							checkPhone = true;
-							if(this.ccList.get(i).getCardNo().compareTo(cc1.getCardNo()) == 0){
-								//System.out.println("checkCardNo is true");
-								checkCardNo = true;
-							}
-						}
-					}
-			}
-			if(checkName && checkAddress && checkPhone && checkCardNo){
-				cc1 = this.ccList.get(i);
-				flag = true;
-			}
-			else{
-				flag = false;
-			}*/
-			flag = true;//TEMPORARY; remove when actual credit card verification is smoother
+		boolean flag = true;
+		int firstNum = cc1.getFirstDig();
+		int creditCardNumSize = cc1.getCreditCardTotDigits();
+		
+		if((firstNum == 3 && creditCardNumSize != 15) || (firstNum == 5 && creditCardNumSize != 16) || (firstNum == 4 && creditCardNumSize != 13) || (firstNum == 4 && creditCardNumSize != 16) || (firstNum == 4 && creditCardNumSize != 19)) {//checking if the cards are American Express, MasterCard, and Visa Cards
+			flag = false;
 		}
+
 		return flag;
 	}
 }
