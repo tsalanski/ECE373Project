@@ -63,6 +63,7 @@ public class JavaJamsGUI extends JFrame {
 			"<BR><BR>Register an account or log in" +
 			"<BR> from an existing one.</center></HTML>"); //welcome text
 	
+	//~~~~~~~~~~~~Main Window~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public JavaJamsGUI(String windowTitle) {
 		super(windowTitle);
 		
@@ -222,7 +223,9 @@ public class JavaJamsGUI extends JFrame {
 			}
 		}	
 	}
+	//~~~~~~~~~~~~Main Window~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
+	//~~~~~~~~~~~~~ Login  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	private class loginButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
     	  
@@ -253,7 +256,10 @@ public class JavaJamsGUI extends JFrame {
 
       }
 	}
+	//~~~~~~~~~~~~~ Login  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	
+	//~~~~~~~~~~~~~ Registration  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	private class registerButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
 		//JOptionPane.showMessageDialog(null, "Register!");
@@ -354,7 +360,10 @@ public class JavaJamsGUI extends JFrame {
 		}
       }
 	}
+	//~~~~~~~~~~~~~ Registration  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	
+	//~~~~~~~~~~~~~ MUSIC VENUE WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	private class musicVenueButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e) {
 	         int option = JOptionPane.showConfirmDialog(null, "Welcome to Music Venue", "Music Venue", JOptionPane.OK_CANCEL_OPTION);
@@ -398,6 +407,8 @@ public class JavaJamsGUI extends JFrame {
 		
 		
 	}
+	//~~~~~~~~~~~~~ MUSIC VENUE WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 		
 	//Fits words to window. Could be expanded for any situation
 	private void fitToWindow() {
