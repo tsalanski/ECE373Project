@@ -195,28 +195,6 @@ public class JavaJamsGUI extends JFrame {
 			//else if(source.equals())
 		}
 		
-		private void handleRegister() {
-			String regName;
-			
-			
-			regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Enter Name", JOptionPane.QUESTION_MESSAGE);
-			
-			if(regName != null) {	
-				if(regName.trim().equals("")) {
-					JOptionPane.showMessageDialog(null, 
-												"Username not valid.", 
-												"Please enter a valid username.", 
-												JOptionPane.ERROR_MESSAGE);
-				}
-				else {
-					System.out.println("Entered in a username"); // DEBUG
-					//m++; //Exit out of error loop --- yo this doesn't work exactly
-					//Welcome to JavaJams
-					JOptionPane.showMessageDialog(null, "Username Accepted\nWelcome to JavaJams!");
-				}
-			}
-		}
-		
 		private void handlePrintTicket() {
 			if(ticketNum < 3) {
 				System.out.println("Printing ticket...");
