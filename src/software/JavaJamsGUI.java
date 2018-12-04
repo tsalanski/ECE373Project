@@ -223,7 +223,9 @@ public class JavaJamsGUI extends JFrame {
 
          int option = JOptionPane.showConfirmDialog(null, message, "Login", JOptionPane.OK_CANCEL_OPTION);
          if (option == JOptionPane.OK_OPTION) {
-             if (username.getText().equals("h") && password.getText().equals("h")) {
+        	 String token1 = username.getText();
+        	 String token2 = password.getText();
+        	 if (verify.verifyUser(user1, token1, token2) == true) {
             	 // user logged in...  goto music venue
                  System.out.println("Login successful");
              } else {
