@@ -400,8 +400,8 @@ public class JavaJamsGUI extends JFrame {
 		// Concert submenu
 		JMenuItem showConcertTicket = new JMenuItem("Show Concert Ticket");
 		
-		showAccountInfo.addActionListener(new MenuListener());
-		showConcertTicket.addActionListener(new MenuListener());
+		//showAccountInfo.addActionListener(new MusicVenueListener());
+		//showConcertTicket.addActionListener(new MusicVenueListener());
 		
 		accountInfo.add(showAccountInfo);
 		concertInfo.add(showConcertTicket);
@@ -423,8 +423,20 @@ public class JavaJamsGUI extends JFrame {
 		
 		//musicBar = new JMenuBar();
 		
-		
 	}
+	
+	/*private class MusicVenueListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JMenuItem source = (JMenuItem)(e.getSource());
+			
+			if(source.equals(showAccountInfo)) {
+				System.out.println("Data Saved!");
+			}
+			else if(source.equals(showConcertTicker)) {
+				System.out.println("Load button pressed");
+			}
+		}
+	}*/
 	//~~~~~~~~~~~~~ MUSIC VENUE WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		
