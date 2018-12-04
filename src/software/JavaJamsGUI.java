@@ -20,7 +20,6 @@ public class JavaJamsGUI extends JFrame {
 	ConcertTicket newReserved = new ConcertTicket();		// create Concert object for reserved ticket
 	ConcertTicket newPurchased = new ConcertTicket();	
 	
-
 	private JMenuBar menuBar;
 	private JPanel panel;
 	
@@ -59,7 +58,37 @@ public class JavaJamsGUI extends JFrame {
 	
 	public JavaJamsGUI(String windowTitle) {
 		super(windowTitle);
-
+		
+		// Initialize for testing purposes:
+		account1.setUsername("admin");
+		account1.setPassword("12345");
+		account1.setEmail("admin@emai.com");
+		User userL = new Listener();
+		userL.setAccount(account1);
+		verify.setNewAccount(account1);
+		
+		ConcertTicket ticket1 = new ConcertTicket();
+		ticket1.setPrice(175.00);
+		ticket1.setSeat(52);
+		ticket1.setConcertName("Concert No. 1");
+		ticket1.setAvailableSeat(100);
+		ticket1.setDate(8);
+		ticket1.setLocation("Tucson");
+		mvenue.setConcerts(ticket1);
+		
+		ConcertTicket ticket2 = new ConcertTicket();
+		ticket2.setPrice(105.00);
+		ticket2.setSeat(11);
+		ticket2.setConcertName("Concert No. 2");
+		ticket2.setAvailableSeat(50);
+		ticket2.setDate(15);
+		ticket2.setLocation("Phoenix");
+		mvenue.setConcerts(ticket2);
+		
+		CreditCard cc0 = new CreditCard("admin", "123 New St.", "123456789", "987654321");
+		userL.getAccount().addCreditCard(cc0);
+		verify.setNewCreditCard(cc0);
+		
 		setSize(440, 400); //Size of GUI window
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -168,6 +197,7 @@ public class JavaJamsGUI extends JFrame {
 		
 		private void handleRegister() {
 			String regName;
+			
 			
 			regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Enter Name", JOptionPane.QUESTION_MESSAGE);
 			
