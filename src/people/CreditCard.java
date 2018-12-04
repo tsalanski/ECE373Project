@@ -6,6 +6,8 @@ public class CreditCard {
 	private String address;
 	private String cardNo;
 	private String phoneNo;
+	private int totDigits;
+	private int firstDig;
 	
 	// constructors
 	public CreditCard() {
@@ -13,6 +15,17 @@ public class CreditCard {
 		this.address = "\0";
 		this.cardNo = "\0";
 		this.phoneNo = "\0";
+		this.totDigits = 0;
+		this.firstDig = 0;
+	}
+	
+	public int getCreditCardTotDigits() {
+		return this.totDigits = this.cardNo.length();
+	}
+	
+	public int getFirstDig() {
+		this.firstDig = Character.getNumericValue(this.cardNo.charAt(0));
+		return this.firstDig;
 	}
 	
 	public CreditCard(String ccName, String ccAddress, String ccPhone, String ccNo) {
@@ -64,6 +77,7 @@ public class CreditCard {
 	
 	boolean checkPhoneFormat(String num) {
 		// user should enter 10 digits for a phone number
+		
 		if(num.length() > 10) {
 			return false;
 		}else {
