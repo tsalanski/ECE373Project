@@ -33,16 +33,22 @@ public class JavaJamsGUI extends JFrame {
 	//Seats
 	
 	private JButton seat;
+	/*for (int i=0 ; i<16 ; i++){
+	    JButton btn = new JButton(String.valueOf(i));
+	    btn.setPreferredSize(new Dimension(40, 40));
+	    panel.add(btn);
+	}*/
 	
 	private int ticketNum = 0; //Use for debugging
 	
 	public JLabel welcome = new JLabel("<HTML><center>Welcome to JavaJams!" +
-			"<BR><BR>Register an account or log in from an existing one.</center></HTML>"); //welcome text
+			"<BR><BR>Register an account or log in" +
+			"<BR> from an existing one.</center></HTML>"); //welcome text
 	
 	public JavaJamsGUI(String windowTitle) {
 		super(windowTitle);
 
-		setSize(735, 600); //Size of GUI window
+		setSize(440, 400); //Size of GUI window
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		
@@ -104,8 +110,22 @@ public class JavaJamsGUI extends JFrame {
 		menuBar.add(file);
 	    menuBar.add(print);
 	    
+	    panel.setLayout(new GridBagLayout());
+	    GridBagConstraints c = new GridBagConstraints();
+	    
 	    panel.add(login);
 	    panel.add(register);
+	    
+	    //Change sizes of buttons
+	    login.setPreferredSize(new Dimension(200, 100));
+	    register.setPreferredSize(new Dimension(200, 100));
+	    
+	    //Change size of font for text in buttons
+	    login.setFont(new Font("Arial", Font.PLAIN, 40));
+	    register.setFont(new Font("Arial", Font.PLAIN, 40));
+	    
+	    //Center buttons
+	    
 	    
 	    setJMenuBar(menuBar);
 	}
@@ -125,9 +145,9 @@ public class JavaJamsGUI extends JFrame {
 			else if(source.equals(exit)) {
 				System.exit(0);
 			}
-			else if(source.equals(register)) {
+			/*else if(source.equals(register)) {
 				handleRegister();
-			}
+			}*/
 			else if(source.equals(venue)) {
 				handlePrintTicket();
 			}
@@ -179,6 +199,23 @@ public class JavaJamsGUI extends JFrame {
 	private class registerButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
          JOptionPane.showMessageDialog(null, "Register!");
+         String regName;
+         regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Enter Name", JOptionPane.QUESTION_MESSAGE);
+			
+		if(regName != null) {	
+			if(regName.trim().equals("")) {
+				JOptionPane.showMessageDialog(null, 
+											"Username not valid.", 
+											"Please enter a valid username.", 
+											JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				System.out.println("Entered in a username");
+				//m++; //Exit out of error loop --- yo this doesn't work exactly
+				//Welcome to JavaJams
+				JOptionPane.showMessageDialog(null, "Username Accepted\nWelcome to JavaJams!");
+			}
+		}
       }
 	}
 	
