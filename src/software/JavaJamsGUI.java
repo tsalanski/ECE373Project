@@ -69,7 +69,7 @@ public class JavaJamsGUI extends JFrame {
 		// Initialize for testing purposes:
 		account1.setUsername("admin");
 		account1.setPassword("12345");
-		account1.setEmail("admin@emai.com");
+		account1.setEmail("admin@email.com");
 		User userL = new Listener();
 		userL.setAccount(account1);
 		verify.setNewAccount(account1);
@@ -110,11 +110,8 @@ public class JavaJamsGUI extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exits GUI when 'X' is clicked
 		
-		
 		buildGUI();
-		
 		add(panel);
-		
 		setVisible(true);
 	}
 	
@@ -163,8 +160,8 @@ public class JavaJamsGUI extends JFrame {
 		menuBar.add(file);
 	    menuBar.add(print);
 	    
-	    panel.setLayout(new GridBagLayout());
-	    GridBagConstraints c = new GridBagConstraints();
+	    //panel.setLayout(new GridBagLayout());
+	    //GridBagConstraints c = new GridBagConstraints();
 	    
 	    panel.add(login);
 	    panel.add(register);
@@ -228,7 +225,7 @@ public class JavaJamsGUI extends JFrame {
 	
 	private class loginButtonListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-         JOptionPane.showMessageDialog(null, "Login!");
+         //JOptionPane.showMessageDialog(null, "Login!");
          JTextField username = new JTextField();
          JTextField password = new JPasswordField();
          Object[] message = {
@@ -269,14 +266,32 @@ public class JavaJamsGUI extends JFrame {
       public void actionPerformed(ActionEvent e) {
 		//JOptionPane.showMessageDialog(null, "Register!");
 		
+    	//For listener and musician buttons
+    	/*
+    	JRadioButton userType1 = new JRadioButton("Listener", true);
+    	JRadioButton userType2 = new JRadioButton("Musician", true);
+    	ButtonGroup group = new ButtonGroup();
+    	group.add(userType1);
+    	group.add(userType2);
+    	
+    	JButton ok = new JButton("ok");
+    	
+    	JFrame frameUserType = new JFrame();
+		//JButton l = new JButton("Listener");
+		//JButton m = new JButton("Musician");
+		frameUserType.add(userType1);
+		frameUserType.add(userType2);
+		//frameUserType.add(ok);
+		frameUserType.setVisible(false);
+		*/
+    	  
 		String regName;
 		String password1 = "a";
 		String password2 = "b";
+		int tempAccType = 1;
 		
 		regName = JOptionPane.showInputDialog(null, "Enter a username pls: ", "Enter Name", JOptionPane.QUESTION_MESSAGE);
-		
-		
-		
+				
 		if(regName != null) {	
 			if(regName.trim().equals("")) {
 				JOptionPane.showMessageDialog(null, 
@@ -303,14 +318,39 @@ public class JavaJamsGUI extends JFrame {
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Password Accepted\nWelcome to JavaJams!");
+				
+				//Checks if Musician or Listener
+				String [] values = {"Musician", "Listener"};
+				Object userType = JOptionPane.showInputDialog(null, "Are you a musician or a listener?", "User Type", JOptionPane.DEFAULT_OPTION, null, values, "Listener");
+				if (userType != null) {
+					//System.out.println("Ay");
+					//System.out.println(userType.toString());
+					if (Objects.equals(userType, "Listener")) {
+						tempAccType = 1;
+						//System.out.println("Listener");
+					}
+					else {
+						tempAccType = 2;
+						//System.out.println("Musician");
+					}
+				}
+				else {
+					//System.out.println("no");
+				}
+				
+				//frameUserType.setVisible(true);
+				//frameUserType.setBounds(1,1,100,100);
+				//String userType = JOptionPane.showInputDialog(frameUserType, "Are you a Musician or a Listener?", null);
 			}
 		}
+		
+
 		
 		// save new user info
 		account1.setUsername(regName);
 		account1.setPassword(password2);
 		// need the Listener or Musician options: (1: Listener, 2: Musician)
-		int tempAccType = 1;
+		//int tempAccType = 1;
 		int accountNo = 0001;	// Generate new Account No.
 		if(tempAccType == 1) { // Registered as Listener
 			user0.setAccountType(1);
