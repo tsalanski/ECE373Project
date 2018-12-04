@@ -415,14 +415,21 @@ public class JavaJamsGUI extends JFrame {
 		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(440, 400);
-		setLayout(new FlowLayout(FlowLayout.LEFT));
+		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		musicBar.setVisible(true);
 		musicPanel.setVisible(true);
 		f.setVisible(true);
 		
-		//musicBar = new JMenuBar();
-		
+		String newList = "";
+		for(Concert c : mvenue.getConcert()) {
+			newList += "Concert Name:  " + c.getConcertName() + "\n";
+			newList += "Location:  " + c.getLocation() + "\n";
+			newList += "Date:  " + c.getDate() + "\n";
+			newList += "Available seats:  " + c.getAvailableSeat() + "\n";
+			newList +=  "\n\n";
+		}
+		JOptionPane.showMessageDialog(null, newList, "C O N C E R T S", JOptionPane.DEFAULT_OPTION);
 	}
 	
 	/*private class MusicVenueListener implements ActionListener {
