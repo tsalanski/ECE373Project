@@ -1,10 +1,13 @@
 package software;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.Random;
+
 
 import people.*;
 import hardware.*;
@@ -229,10 +232,16 @@ public class JavaJamsGUI extends JFrame {
             	 // user logged in...  goto music venue
                  System.out.println("Login successful");
              } else {
-                 System.out.println("login failed");
+            	 JOptionPane.showMessageDialog(null, 
+							"Login Failed.", 
+							"Invalid username or password.", 
+							JOptionPane.ERROR_MESSAGE);
              }
          } else {
-             System.out.println("Login canceled");
+        	 JOptionPane.showMessageDialog(null, 
+						"Login Canceled.", 
+						null, 
+						JOptionPane.ERROR_MESSAGE);
          }
 
       }
@@ -258,10 +267,9 @@ public class JavaJamsGUI extends JFrame {
 											JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				System.out.println("Entered in a username");
 				//m++; //Exit out of error loop --- yo this doesn't work exactly
 				//Welcome to JavaJams
-				JOptionPane.showMessageDialog(null, "Username Accepted\nWelcome to JavaJams!");
+				JOptionPane.showMessageDialog(null, "Username Accepted");
 			}
 		}
 		
@@ -278,6 +286,24 @@ public class JavaJamsGUI extends JFrame {
 			else {
 				JOptionPane.showMessageDialog(null, "Password Accepted\nWelcome to JavaJams!");
 			}
+		}
+		
+		// save new user info
+		account1.setUsername(regName);
+		account1.setPassword(password2);
+		// need the Listener or Musician options: (1: Listener, 2: Musician)
+		int tempAccType = 1;
+		int accountNo = 0001;	// Generate new Account No.
+		if(tempAccType == 1) { // Registered as Listener
+			user0.setAccountType(1);
+			user0.setAccountNo(accountNo);
+			user0.setAccount(account1);
+
+		}else if(tempAccType == 2) { // Registered as Musician
+			user1.setAccountType(2);
+			user1.setAccountNo(accountNo);
+			user1.setAccount(account1);
+
 		}
       }
 	}
