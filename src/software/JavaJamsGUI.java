@@ -9,6 +9,8 @@ import people.*;
 import hardware.*;
 
 public class JavaJamsGUI extends JFrame {
+	
+
 	private JMenuBar menuBar;
 	private JPanel panel;
 	
