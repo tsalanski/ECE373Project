@@ -485,6 +485,8 @@ public class JavaJamsGUI extends JFrame {
 	      }
 	}
 	
+	
+	//Print ticket
 	private class AccountButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e) {
 	    	  JOptionPane.showMessageDialog(null, "Print Ticket", "Print Ticket", JOptionPane.DEFAULT_OPTION);
