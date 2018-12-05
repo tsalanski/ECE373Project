@@ -413,8 +413,8 @@ public class JavaJamsGUI extends JFrame {
 		musicPanel.add(musicBar);
 		f.add(musicPanel);
 		
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(440, 400);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //closes window instead of entire application
+		f.setSize(200, 100);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		musicBar.setVisible(true);
