@@ -391,7 +391,7 @@ public class JavaJamsGUI extends JFrame {
 		JPanel musicPanel = new JPanel();
 		
 		// Buttons
-		JButton accountInfo = new JButton("Account Info");
+		JButton accountInfo = new JButton("Print Tickets");
 		JButton concertInfo = new JButton("Concert Info");
 		//JButton exitButton = new JButton("Exit");
 		
@@ -438,6 +438,8 @@ public class JavaJamsGUI extends JFrame {
 		musicPanel.setVisible(true);
 		f.setVisible(true);
 		
+		Concerts();
+		/*
 		String newList = "";
 		for(Concert c : mvenue.getConcert()) {
 			newList += "Concert Name:  " + c.getConcertName() + "\n";
@@ -446,18 +448,46 @@ public class JavaJamsGUI extends JFrame {
 			newList += "Available seats:  " + c.getAvailableSeat() + "\n";
 			newList +=  "\n\n";
 		}
-		JOptionPane.showMessageDialog(null, newList, "C O N C E R T S", JOptionPane.DEFAULT_OPTION);
+		Object[] options = {"Buy Concert 1 Tix",
+                			"Buy Concert 2 Tix",
+                			"No eggs, no ham!"};
+		
+		JOptionPane.showOptionDialog(null, newList, "C O N C E R T S", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
+		*/
+	}
+	
+	//Concert list and ability to purchase tickets
+	private void Concerts() {
+		String newList = "";
+		for(Concert c : mvenue.getConcert()) {
+			newList += "Concert Name:  " + c.getConcertName() + "\n";
+			newList += "Location:  " + c.getLocation() + "\n";
+			newList += "Date:  " + c.getDate() + "\n";
+			newList += "Available seats:  " + c.getAvailableSeat() + "\n";
+			newList +=  "\n\n";
+		}
+		
+		Object[] options = {"Buy Concert 1 Tix",
+                			"Buy Concert 2 Tix",
+                			"Exit"};
+		
+		int n = JOptionPane.showOptionDialog(null, newList, "C O N C E R T S",
+									JOptionPane.YES_NO_CANCEL_OPTION,
+									JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
+		System.out.println(n);
+		
 	}
 	
 	private class ConcertButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e) {
-	    	  JOptionPane.showMessageDialog(null, "Clicked Concerts", "C O N C E R T S", JOptionPane.DEFAULT_OPTION);
+	    	  //JOptionPane.showMessageDialog(null, "Clicked Concerts", "C O N C E R T S", JOptionPane.DEFAULT_OPTION);
+	    	  Concerts();
 	      }
 	}
 	
 	private class AccountButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e) {
-	    	  JOptionPane.showMessageDialog(null, "Clicked accounts", "A C C O U N T", JOptionPane.DEFAULT_OPTION);
+	    	  JOptionPane.showMessageDialog(null, "Print Ticket", "Print Ticket", JOptionPane.DEFAULT_OPTION);
 	      }
 	}
 	
