@@ -474,10 +474,19 @@ public class JavaJamsGUI extends JFrame {
 		int n = JOptionPane.showOptionDialog(null, newList, "C O N C E R T S",
 									JOptionPane.YES_NO_CANCEL_OPTION,
 									JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
+		
 		newPurchased = mvenue.getConcert().get(n);
 		if(newPurchased.checkAvailableSeats() == false) {
-			System.out.println("No seats available, please try again at a later time.\n");
+			//System.out.println("No seats available, please try again at a later time.\n");
 		}
+		
+		if (n != 2) {
+			//Object creditCard;
+			//creditCard = JOptionPane.showInputDialog(null, "Input Credit Card Information", "Credit Card", JOptionPane.CANCEL_OPTION);
+			//System.out.println(creditCard);
+		}
+		
+		
 		
 		if(verify.verifyCard(cc1) == true) {
 			newPurchased = mvenue.getConcert().get(n);
