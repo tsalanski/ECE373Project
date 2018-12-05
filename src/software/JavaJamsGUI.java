@@ -458,6 +458,7 @@ public class JavaJamsGUI extends JFrame {
 	
 	//Concert list and ability to purchase tickets
 	private void Concerts() {
+		user1.getAccount().displayAccountInfo(user1);
 		String newList = "";
 		for(Concert c : mvenue.getConcert()) {
 			newList += "Concert Name:  " + c.getConcertName() + "\n";
@@ -481,21 +482,44 @@ public class JavaJamsGUI extends JFrame {
 		}
 		
 		if (n != 2) {
-			//Object creditCard;
-			//creditCard = JOptionPane.showInputDialog(null, "Input Credit Card Information", "Credit Card", JOptionPane.CANCEL_OPTION);
-			//System.out.println(creditCard);
+			 JTextField ccName = new JTextField();
+			 JTextField	ccAddress = new JTextField();
+			 JTextField	ccPhone = new JTextField();
+	         JTextField ccNo = new JPasswordField();
+	         Object[] message = {
+	             "Name:", ccName,
+	             "Address:", ccAddress,
+	             "Phone:", ccPhone,
+	             "Credit Card No.:", ccNo
+	         };
+
+	         int option = JOptionPane.showConfirmDialog(null, message, "Enter Credit Card Info", JOptionPane.OK_CANCEL_OPTION);
+	         if (option == JOptionPane.OK_OPTION) {
+	        	 String token1 = ccName.getText();
+	        	 String token2 = ccAddress.getText();
+	        	 String token3 = ccPhone.getText();
+	        	 String token4 = ccNo.getText();
+	        	 
+	        	cc1.setFullname(token1);
+				cc1.setAddress(token2);
+				cc1.setPhoneNo(token3);
+				cc1.setCardNo(token4);
+				if(verify.verifyCard(cc1) == true) {
+					newPurchased = mvenue.getConcert().get(n);
+					JOptionPane.showMessageDialog(null, "Purchased successful.", null, JOptionPane.ERROR_MESSAGE);
+					user1.getAccount().addPurchasedTicket(newPurchased);
+					newPurchased.removeAvailableSeats();
+	             } else {
+	            	 JOptionPane.showMessageDialog(null, "Purchased Failed.", "Invalid Credit Card Information.", JOptionPane.ERROR_MESSAGE);
+	             }
+	         } else {
+	        	 JOptionPane.showMessageDialog(null, null, null, JOptionPane.ERROR_MESSAGE);
+	         }
 		}
-		
-		
-		
-		if(verify.verifyCard(cc1) == true) {
-			newPurchased = mvenue.getConcert().get(n);
-		}
-		
-		user1.getAccount().addPurchasedTicket(newPurchased);
-		newPurchased.removeAvailableSeats();
 			
 		System.out.println(n);
+		user1.getAccount().displayAccountInfo(user1);
+		
 		
 	}
 	
