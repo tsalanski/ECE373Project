@@ -493,7 +493,7 @@ public class JavaJamsGUI extends JFrame {
 	}
 	*/
 	//~~~~~~~~~~~~~ MUSIC VENUE WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+// do something
 		
 	//Fits words to window. Could be expanded for any situation
 	private void fitToWindow() {
