@@ -476,12 +476,13 @@ public class JavaJamsGUI extends JFrame {
 									JOptionPane.YES_NO_CANCEL_OPTION,
 									JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
 		
-		newPurchased = mvenue.getConcert().get(n);
-		if(newPurchased.checkAvailableSeats() == false) {
-			//System.out.println("No seats available, please try again at a later time.\n");
-		}
+		
 		
 		if (n != 2) {
+			newPurchased = mvenue.getConcert().get(n);
+			if(newPurchased.checkAvailableSeats() == false) {
+				//System.out.println("No seats available, please try again at a later time.\n");
+			}
 			 JTextField ccName = new JTextField();
 			 JTextField	ccAddress = new JTextField();
 			 JTextField	ccPhone = new JTextField();
