@@ -348,12 +348,14 @@ public class JavaJamsGUI extends JFrame {
 		int accountNo = 0001;	// Generate new Account No.
 		if(tempAccType == 1) { // Registered as Listener
 			account1.setAccountType(1);
+			account1.setEmail("test@.com");
 			user0.setAccountNo(accountNo);
 			user0.setAccount(account1);
 			verify.setNewAccount(account1);
 
 		}else if(tempAccType == 2) { // Registered as Musician
 			account1.setAccountType(2);
+			account1.setEmail("test@.com");
 			user1.setAccountNo(accountNo);
 			user1.setAccount(account1);
 			verify.setNewAccount(account1);
@@ -543,7 +545,7 @@ public class JavaJamsGUI extends JFrame {
 	    	  JOptionPane.showMessageDialog(null, info, "Account Info", JOptionPane.DEFAULT_OPTION);
 	      }
 	}
-	
+	//123
 	/*
 	private class ExitButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e) {
