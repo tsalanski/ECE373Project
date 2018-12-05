@@ -238,7 +238,7 @@ public class JavaJamsGUI extends JFrame {
 	private class MenuListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JMenuItem source = (JMenuItem)(e.getSource());
-			
+			System.out.println(e);
 			//int m = 0;// used for error loops --- actually don't do this, use a JButton; else infinite loop
 			
 			if(source.equals(save)) {
@@ -463,8 +463,8 @@ public class JavaJamsGUI extends JFrame {
 		musicPanel.add(musicBar);
 		f.add(musicPanel);
 		
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(440, 400);
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //closes window instead of entire application
+		f.setSize(200, 100);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		musicBar.setVisible(true);
@@ -483,13 +483,13 @@ public class JavaJamsGUI extends JFrame {
 	}
 	
 	/*private class MusicVenueListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			JMenuItem source = (JMenuItem)(e.getSource());
+		public void actionPerformed(ActionEvent e2) {
+			JMenuItem source2 = (JMenuItem)(e2.getSource());
 			
-			if(source.equals(showAccountInfo)) {
+			if(source2.equals(showAccountInfo)) {
 				System.out.println("Data Saved!");
 			}
-			else if(source.equals(showConcertTicker)) {
+			else if(source2.equals(showConcertTicker)) {
 				System.out.println("Load button pressed");
 			}
 		}
