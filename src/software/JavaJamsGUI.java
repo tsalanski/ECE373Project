@@ -77,71 +77,21 @@ public class JavaJamsGUI extends JFrame {
 		
 		ConcertTicket ticket1 = new ConcertTicket();
 		ticket1.setPrice(175.00);
-		ticket1.setSeat(302);
-		ticket1.setConcertName("YG - Stay Dangerous");
-		ticket1.setAvailableSeat(3000);
-		ticket1.setDate(0306);
+		ticket1.setSeat(52);
+		ticket1.setConcertName("Concert No. 1");
+		ticket1.setAvailableSeat(100);
+		ticket1.setDate(8);
 		ticket1.setLocation("Tucson");
-		ticket1.setArtist("YG");
-		ticket1.setGenre("HipHop");
-		ticket1.setCity("Phoenix");
 		mvenue.setConcerts(ticket1);
 		
-		ticket1.setPrice(20.00);
-		ticket1.setSeat(25);
-		ticket1.setConcertName("Bryce Vice Concert");
-		ticket1.setAvailableSeat(1000);
-		ticket1.setDate(0207);
-		ticket1.setLocation("Club Red");
-		ticket1.setArtist("Bryce Vice");
-		ticket1.setGenre("HipHop");
-		ticket1.setCity("Phoenix");
-		mvenue.setConcerts(ticket1);
-		
-		ticket1.setPrice(18.00);
-		ticket1.setSeat(25);
-		ticket1.setConcertName("Yung Pinch - Lost At Sea");
-		ticket1.setAvailableSeat(1000);
-		ticket1.setDate(1202);
-		ticket1.setLocation("Amphitheathre");
-		ticket1.setArtist("Yung Pinch");
-		ticket1.setGenre("HipHop");
-		ticket1.setCity("Phoenix");
-		mvenue.setConcerts(ticket1);
-		
-		ticket1.setPrice(18.00);
-		ticket1.setSeat(87);
-		ticket1.setConcertName("Yung Pinch - Lost At Sea");
-		ticket1.setAvailableSeat(1000);
-		ticket1.setDate(1202);
-		ticket1.setLocation("Amphitheathre");
-		ticket1.setArtist("Yung Pinch");
-		ticket1.setGenre("HipHop");
-		ticket1.setCity("Phoenix");
-		mvenue.setConcerts(ticket1);
-		
-		ticket1.setPrice(49.5);
-		ticket1.setSeat(125);
-		ticket1.setConcertName("The Revivalists");
-		ticket1.setAvailableSeat(500);
-		ticket1.setDate(1202);
-		ticket1.setLocation("Rialto Theatre");
-		ticket1.setArtist("The Revivalists");
-		ticket1.setGenre("Rock");
-		ticket1.setCity("Tucson");
-		mvenue.setConcerts(ticket1);
-		
-		ticket1.setPrice(58.00);
-		ticket1.setSeat(79);
-		ticket1.setConcertName("Death Cab for Cutie");
-		ticket1.setAvailableSeat(500);
-		ticket1.setDate(0330);
-		ticket1.setLocation("Tucson Mall");
-		ticket1.setArtist("Death Cab for Cutie");
-		ticket1.setGenre("Rock");
-		ticket1.setCity("Tucson");
-		mvenue.setConcerts(ticket1);
-
+		ConcertTicket ticket2 = new ConcertTicket();
+		ticket2.setPrice(105.00);
+		ticket2.setSeat(11);
+		ticket2.setConcertName("Concert No. 2");
+		ticket2.setAvailableSeat(50);
+		ticket2.setDate(15);
+		ticket2.setLocation("Phoenix");
+		mvenue.setConcerts(ticket2);
 		
 		CreditCard cc0 = new CreditCard("admin", "123 New St.", "123456789", "987654321");
 		userL.getAccount().addCreditCard(cc0);

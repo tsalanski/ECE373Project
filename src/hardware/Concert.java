@@ -7,20 +7,14 @@ public abstract class Concert {
 	private String location;
 	private int availableSeat;
 	private String date;
-	private String artist;
-	private String genre;
-	private String city;
 	private Category categories;
 	
 	//Constructors
 	public Concert () {
-		this.concertName = "unknown";
+		this.concertName = "\0";
 		this.location = "No location";
 		this.availableSeat = -1;
 		this.date = null;
-		this.artist = "unknown";
-		this.genre = "unknown";
-		this.city = "unknown";
 		this.categories = new Category();
 	}
 	
@@ -33,30 +27,6 @@ public abstract class Concert {
 	}	
 
 	//Getters and setters
-	public void setCity(String str) {
-		this.city = str;
-	}
-	
-	public String getCity() {
-		return this.city;
-	}
-	
-	public void setArtist(String str) {
-		this.artist = str;
-	}
-	
-	public String getArtist() {
-		return this.artist;
-	}
-	
-	public void setGenre(String str) {
-		this.genre = str;
-	}
-	
-	public String getGenre() {
-		return this.genre;
-	}
-	
 	public int getAvailableSeat() {
 		return this.availableSeat;
 	}
