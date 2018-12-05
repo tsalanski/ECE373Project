@@ -8,6 +8,7 @@ public class Account {
 	private String username;
 	private String password;
 	private String email;
+	private int accountType; // (1: Listener, 2: Musician)
 	private ArrayList<CreditCard> creditCardList;
 	private ArrayList<ConcertTicket> purchasedTicketList;
 	private ArrayList<ConcertTicket> reservedTicketList;
@@ -17,6 +18,7 @@ public class Account {
 		this.username = "\0";
 		this.password = "\0";
 		this.email = "\0";
+		this.accountType = -1;
 		this.creditCardList = new ArrayList<CreditCard>();
 		this.purchasedTicketList = new ArrayList<ConcertTicket>();
 		this.reservedTicketList = new ArrayList<ConcertTicket>();
@@ -35,6 +37,10 @@ public class Account {
 		this.email = str;
 	}
 	
+	public void setAccountType(int accType) {
+		this.accountType = accType;
+	}
+	
 	// getters
 	public String getUsername() {
 		return this.username;
@@ -46,6 +52,10 @@ public class Account {
 	
 	public String getEmail() {
 		return this.email;
+	}
+	
+	public int getAccountType() {
+		return this.accountType;
 	}
 	
 	public ArrayList<CreditCard> getCreditCardList(){

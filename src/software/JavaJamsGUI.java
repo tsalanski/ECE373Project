@@ -347,13 +347,13 @@ public class JavaJamsGUI extends JFrame {
 		// save new user info
 		int accountNo = 0001;	// Generate new Account No.
 		if(tempAccType == 1) { // Registered as Listener
-			user0.setAccountType(1);
+			account1.setAccountType(1);
 			user0.setAccountNo(accountNo);
 			user0.setAccount(account1);
 			verify.setNewAccount(account1);
 
 		}else if(tempAccType == 2) { // Registered as Musician
-			user1.setAccountType(2);
+			account1.setAccountType(2);
 			user1.setAccountNo(accountNo);
 			user1.setAccount(account1);
 			verify.setNewAccount(account1);
