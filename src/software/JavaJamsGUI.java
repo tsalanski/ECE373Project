@@ -387,9 +387,19 @@ public class JavaJamsGUI extends JFrame {
 	public void buildMusicVenueWindow() {
 		JFrame f = new JFrame("Music Venue");
 		
-		JMenuBar musicBar = new JMenuBar();
+		//JMenuBar musicBar = new JMenuBar();
 		JPanel musicPanel = new JPanel();
 		
+		// Buttons
+		JButton accountInfo = new JButton("Account Info");
+		JButton concertInfo = new JButton("Concert Info");
+		//JButton exitButton = new JButton("Exit");
+		
+		accountInfo.addActionListener(new AccountButtonListener());
+		concertInfo.addActionListener(new ConcertButtonListener());
+		//exitButton.addActionListener(new ExitButtonListener());
+		
+		/*
 		// Menu options
 		JMenu accountInfo = new JMenu("Account Info");
 		JMenu concertInfo = new JMenu("Concert Info");
@@ -411,13 +421,17 @@ public class JavaJamsGUI extends JFrame {
 		
 		setJMenuBar(musicBar);
 		musicPanel.add(musicBar);
+		*/
+		musicPanel.add(accountInfo);
+		musicPanel.add(concertInfo);
+		//musicPanel.add(exitButton);
 		f.add(musicPanel);
 		
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //closes window instead of entire application
-		f.setSize(200, 100);
+		f.setSize(150, 150);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
-		musicBar.setVisible(true);
+		//musicBar.setVisible(true);
 		musicPanel.setVisible(true);
 		f.setVisible(true);
 		
@@ -432,18 +446,39 @@ public class JavaJamsGUI extends JFrame {
 		JOptionPane.showMessageDialog(null, newList, "C O N C E R T S", JOptionPane.DEFAULT_OPTION);
 	}
 	
-	/*private class MusicVenueListener implements ActionListener {
+	private class ConcertButtonListener implements ActionListener {
+	      public void actionPerformed(ActionEvent e) {
+	    	  JOptionPane.showMessageDialog(null, "Clicked Concerts", "C O N C E R T S", JOptionPane.DEFAULT_OPTION);
+	      }
+	}
+	
+	private class AccountButtonListener implements ActionListener {
+	      public void actionPerformed(ActionEvent e) {
+	    	  JOptionPane.showMessageDialog(null, "Clicked accounts", "A C C O U N T", JOptionPane.DEFAULT_OPTION);
+	      }
+	}
+	
+	/*
+	private class ExitButtonListener implements ActionListener {
+	      public void actionPerformed(ActionEvent e) {
+	    	  
+	      }
+	}*/
+	
+	/*
+	private class MusicVenueListener implements ActionListener {
 		public void actionPerformed(ActionEvent e2) {
 			JMenuItem source2 = (JMenuItem)(e2.getSource());
 			
-			if(source2.equals(showAccountInfo)) {
+			if(source2.equals(accountInfo)) {
 				System.out.println("Data Saved!");
 			}
-			else if(source2.equals(showConcertTicker)) {
+			else if(source2.equals(concertInfo)) {
 				System.out.println("Load button pressed");
 			}
 		}
-	}*/
+	}
+	*/
 	//~~~~~~~~~~~~~ MUSIC VENUE WINDOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		
