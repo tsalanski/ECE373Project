@@ -391,7 +391,7 @@ public class JavaJamsGUI extends JFrame {
 		JPanel musicPanel = new JPanel();
 		
 		// Buttons
-		JButton accountInfo = new JButton("Print Tickets");
+		JButton accountInfo = new JButton("Account Info");
 		JButton concertInfo = new JButton("Concert Info");
 		//JButton exitButton = new JButton("Exit");
 		
@@ -510,7 +510,13 @@ public class JavaJamsGUI extends JFrame {
 	//Print ticket
 	private class AccountButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e) {
-	    	  JOptionPane.showMessageDialog(null, "Print Ticket", "Print Ticket", JOptionPane.DEFAULT_OPTION);
+	    	  //String tickets = user1.getAccount().getPurchasedTicketList().toString();
+	    	  //String info = user1.getAccount().
+	    	  Object[] info = {user1.getAccount().getUsername(), user1.getAccount().getEmail(),
+	    			  			user1.getAccount().getCreditCardList().toString(), user1.getAccount().getReservedTicketList().toString(),
+	    			  			user1.getAccount().getPurchasedTicketList().toString()};
+	    	  
+	    	  JOptionPane.showMessageDialog(null, info, "Account Info", JOptionPane.DEFAULT_OPTION);
 	      }
 	}
 	
